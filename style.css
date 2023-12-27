@@ -74,9 +74,8 @@ content: "Erion Plaku";
 
 .photo-width
 {
- width: 28%;
 box-sizing:border-box;
-min-width: 280px;
+width: 280px;
 }
 
 .name-width
