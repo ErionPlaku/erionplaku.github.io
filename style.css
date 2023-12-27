@@ -1,0 +1,323 @@
+* 
+{
+  box-sizing: border-box;
+}
+
+body 
+{
+	background: #FFFFFF;
+	color: #776677;
+	font-size: 16px;
+	margin:  0px auto;
+	margin-bottom: 20px;
+	padding: 10px 10px 10px 10px;
+	font-family: helvetica,Trebuchet, arial, sans-serif;
+        max-width: 980px;
+        line-height: 26px;
+}
+
+footer
+{
+   clear: both;
+   padding-top: 10px;
+   font-size: 14px;
+   color: #999999;	
+}
+.myfooter:before
+{
+content: "Copyright (c) 2020 Erion Plaku. All rights reserved. Designed by Erion Plaku";
+}
+
+.heading1 {min-width: 360px; padding:0px 0px 20px 0px; margin:0}
+.heading2 {min-width: 730px; padding:0px 0px 20px 0px; margin:0}
+
+.column 
+{
+  float: left;
+  margin: 0px 0px 20px 0px;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #444855;
+  overflow: hidden;
+  width: 100%;
+  min-width: 360px; 
+}
+
+.twocols{ display: flex; min-width: 730px;}
+.half1  { flex: 49.3%; min-width: 360px;margin-right:5px;}
+.half2  { flex: 49.3%; min-width: 360px;margin-left: 5px;}
+.main1  { width: 360px;margin-right:5px;}
+.main2  { flex: 61.4%; min-width: 360px;margin-left: 5px;}
+
+.colone  { flex: 61.4%; min-width:360px;margin-right:5px;}
+.coltwo  { width: 360px;margin-left: 5px; border-style:none}
+
+.sidebar 
+{
+	float: left;
+	margin: 0px 0px 10px 0px;  
+	padding: 0px 0px 0px 0px;
+	width: 100%;
+        background-color: #FFFFFF;
+	border: 1px solid #444855;
+	overflow: hidden;
+}
+.sidebar ul, ol
+{
+  margin: 10px 0px 10px 15px;
+  padding: 0px 0px 0px 10px;
+}
+.sidebar li
+{
+   margin: 0px 0px 5px 0px;
+   padding: 0px 5px 0px 0px;
+}
+
+
+.name-width
+{
+ width: 28%;
+box-sizing:border-box;
+min-width: 280px;
+}
+.name-title
+{
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 0;
+  color: #444455;
+}
+
+.affiliation
+{
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.site-title 
+{
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin: 0;
+	padding: 0px 0px 0px 15px;
+	padding-right: 16px;
+        color: #FFFFFF;
+	width: 200px;
+	line-height: 32px;
+
+}
+.sidebar-title
+{
+	background: #777788;/*#666677*/;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 25px;
+	margin: 0;
+	padding: 0px 0px 0px 15px;
+        color: #FFFFFF;
+	text-transform: uppercase;
+}
+
+.icon-title
+{
+	background: #777788;/*#666677*/;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 25px;
+	margin: 0;
+	padding: 0px 0px 0px 15px;
+        color: #FFFFFF;
+	text-transform: uppercase;
+}
+.article-title
+{
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 10px 0px 10px 0px;
+  padding:0px;
+  color: #FF2288;
+}
+.article-subtitle
+{
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0px 0px 10px 0px;
+  padding:0;
+  color: #FF2288;
+  text-align: right;
+  font-style: italic;
+}
+.areas-title
+{
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 25px;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+        color: #444455;
+	text-transform: uppercase;
+  margin: 10px 0px 20px 0px;
+}
+
+a
+{
+ text-decoration: none;
+ color: #004488
+}
+
+
+.sidebar a:focus,
+.sidebar a:hover,
+.article-title a:focus,
+.article-title a:hover,
+a:focus,
+a:hover
+{
+  color: #AAAAAA;
+}
+.sidebar-title a,
+.icon-title a
+{
+  color: #FFFFFF;	
+}
+.sidebar li > a,
+.article-title a,
+.article-subtitle a
+{
+  color: #FF4488;
+}
+
+li.citation
+{
+  margin-bottom: 12px;
+}
+
+.ptitle
+{
+  color: #775577;
+  font-weight: bold;
+}
+
+.caption
+{
+  font-size: 0.9rem; 
+  margin: 0;
+  padding: 0px 0px 10px 0px;
+  line-height: 16px;
+}
+p
+{
+  margin:  0;
+  padding: 0;
+  padding-bottom: 10px;
+}
+
+.banner
+{
+padding: 0;
+margin: 0;
+}
+.bannerimg
+{
+width:100%; min-height:125px;box-sizing:border-box;padding:0;margin:0;
+}
+
+
+.icon 
+{
+	float: left;
+	margin: 0px 2px 5px 0px;  
+	padding: 0px 0px 0px 0px;
+	height: 168px;
+	width: 32%;
+	min-width: 165px;
+        background-color: #FFFFFF;
+	border: 1px solid #444855;
+	overflow: hidden;
+}
+
+.textwrapleft { float: right; margin: 10px;}
+.textwrapright{ float: left; margin: 10px;}
+
+
+@media only screen and (max-device-width: 480px) 
+{
+}
+
+
+.topnav 
+{
+  overflow: hidden;
+ 
+	background: #444455;
+	border: 1px solid #444855;
+        clear: both;
+	width: 100%;
+        font-size: 1rem;
+	margin: 0px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+
+}
+
+.topnav a 
+{
+  float: left;
+  display: block;
+  color: #FFFFFF;
+  text-align: left;
+  padding: 0;
+  margin: 0px 40px 0px 0px;	
+  text-decoration: none;
+  font-size: 1.03rem;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+.topnav a:hover
+{
+  background-color: #666677;
+  color: #FFFFAA;
+}
+
+.topnav a.active 
+{
+ 	color: #FFFFFF;
+	font-weight: bold;
+
+}
+
+.topnav .xicon {display: none;}
+
+@media screen and (max-width: 480px) 
+{
+  .topnav a {display: none;}
+  .topnav a.xicon
+  {
+    float: right;
+    display: block;
+ position: relative;
+    right: 0px;
+    top: 0;
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .xicon 
+  {
+    position: absolute;
+  }
+  .topnav.responsive a 
+  {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.menusym
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.menusym:before
+{
+   content: "\00A0\2261" /* &nbsp;&equiv &/
+}
