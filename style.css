@@ -72,6 +72,12 @@ content: "Erion Plaku";
    padding: 0px 5px 0px 0px;
 }
 
+.photo-width
+{
+ width: 28%;
+box-sizing:border-box;
+min-width: 280px;
+}
 
 .name-width
 {
