@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Erion Plaku"> 
+	<title> Erion Plaku: Robotics Course </title>
+	<link rel="stylesheet" type="text/css" media="all" href="style.css">
+        <script src="mymenu.js"></script>
+</head>
+
+<body>
+
+
+<div class="heading2">
+
+<table class="banner">
+	<tr>
+<td style="width:160px"> <img src="figs/plaku.jpg" style="width:150px;"></td>
+		<td class="name-width">
+<p class="name-title">Erion Plaku</p>
+<p class="affiliation">
+<a href="https://www.nsf.gov/staff/staff_bio.jsp?lan=eplaku&org=IIS&from_org=DGA">Program Director</a><br>
+<a href="https://www.nsf.gov/div/index.jsp?div=IIS">Division of Information and Intelligent Systems (IIS)</a><br>
+<a href="https://www.nsf.gov/dir/index.jsp?org=CISE">Directorate for Computer and Information Science and Engineering (CISE)</a><br>
+<a href="https://www.nsf.gov/">National Science Foundation</a><br>
+</p>
+</td>
+	
+
+</tr></table>
+
+</div>
+
+	
+
+	<div class="column">
+
+<p>
+		Erion Plaku is a Program Director at the National Science Foundation (NSF) in the Directorate for
+Computer and Information Science and Engineering and the Division of Information and Intelligent Systems. Prior to joining NSF, Dr. Plaku was an Associate Professor in the Department of Computer
+Science at George Mason University (2020-2023) and in the Department of Electrical Engineering and
+Computer Science at the Catholic University of America (2010–2020). Dr. Plaku received his Ph.D. degree in Computer Science from Rice University (2008). He was a Postdoctoral Fellow in the Laboratory for Computational Sensing and Robotics at Johns Hopkins University (2008–2010).
+			</p>
+
+	</div>
+
+<div class="topnav">
+   <table style="width:100%">
+    <tr>
+       <td style="padding-left:10px">
+           <a  href="index.html">Research</a>
+           <a href="ErionPlaku_CV.pdf">CV</a>
+           <a href="Publications.html">Publications</a>
+           <a class="active" href="Teaching.html">Teaching</a>
+           <a href="Activities.html">Activities</a>
+            <a href="Misc.html">Misc</a>
+       </td></tr></table>
+</div>
+
+
+
+<div class="twocols">
+
+<div class="column colone">
+
+
+
+<p class="article-title">Introduction to Robotics</p>
+
+<p>
+This course aims to make accessible to students fundamental principles in
+classical and modern approaches related to robot motion planning and the representation and use of geometric
+models acquired from sensor data. Two common themes will run throughout the course:
+<ul>
+<li>
+How can the robot automatically plan and execute a sequence of motions that avoids collision with obstacles and
+accomplishes the assigned task?
+</li>
+<li>
+How can the robot use sensor-based information to determine its own state and model the world?
+</li>
+</ul>
+These themes and the related algorithms will be presented in the context of practical applications arising in diverse
+areas such as mobile systems, navigation and exploration, robot manipulation, computer animation, video games,
+computational biology, and medicine.
+</p>
+
+
+<p>
+<strong>Note</strong>: 
+Many of the lectures are accompanied by demo programs to illustrate the various concepts and algorithms. Since some of these can be assigned as programming projects for grading purposes, I have not made them publicly available. If you are an instructor and are interested in the lectures/projects/exams, send an email to me to obtain LaTeX source files for the lectures/exams as well as solutions to the programming projects and additional support code to illustrate the various algorithms.
+</p>
+
+
+<p class="article-title"><a name="Syllabus" href="#Syllabus">Syllabus & Lectures</a></p>
+
+<p>
+<ul>
+
+
+
+<li><strong>Basic Motion-Planning Algorithms and Foundations</strong>
+<ul>
+<li>Bug Algorithms <a href="teaching/LecRoboBugAlgorithms.pdf">[PDF]</a></li>
+<li>Configuration Spaces <a href="teaching/LecRoboCSpace.pdf">[PDF]</a></li>
+<li>Potential Fields <a href="teaching/LecRoboPotentials.pdf">[PDF]</a></li>
+</ul>
+</li>
+
+<li><strong>Probabilistic and Sampling-based Motion Planning</strong> <a href="teaching/LecRoboMPSampling.pdf">[PDF]</a>
+<ul>
+<li> Roadmap Approaches</li>
+<li> Tree Approaches</li>
+</ul>
+</li>
+
+<li><strong>Advanced Motion Planning</strong>
+<ul>
+<li>Multiple Robots <a href="teaching/LecRoboMultiRobots.pdf">[PDF]</a></li>
+<li>Manipulation Planning <a href="teaching/LecRoboManip.pdf">[PDF]</a></li>
+<li>Kinematics/Dynamics/Physics-based Simulations <a href="teaching/LecRoboDynamics.pdf">[PDF]</a></li>
+</ul>
+</li>
+
+<li><strong>Localization</strong>
+<ul>
+<li>Kalman Filtering</li>
+<li>Bayes Filtering </li>
+</ul>
+</li>
+
+
+</ul>
+</p>
+
+<p class="article-title"><a name="Project1Bug" href="#Project1Bug">Project 1: Bug Algorithms</a></p>
+<p class="article-subtitle"><a href="teaching/Project1Bug.zip">[support code in C++ and Matlab]</a></p>
+
+
+<ul>
+<li>Implement Bug0, Bug1, and Bug2 algorithms</li>
+<li>Implementation should be done in C/C++ or MATLAB on top of the provided support code</li>
+</ul>
+
+<p class="article-title"><a name="Project2PF" href="#Project2PF">Project 2: Potential Field Planning for Rigid Bodies and Manipulator Chains</a></p>
+<p class="article-subtitle"><a href="teaching/Project2PFP.zip">[support code in C++ and Matlab]</a></p>
+
+<ul>
+<li>Implement potential field planners
+in the case of <b><em>rigid bodies</em></b> and <b><em>manipulator chains</em></b></li>
+<li>Your implementation should also contain strategies for escaping
+  local minima when the robot gets stuck. One possibility is to
+  considerably increase the repulsive potential in order to push the robot away
+  from the obstacle. Another one is to move in a random direction
+  away from the obstacle. You could also try adding other artificial
+  goal/obstacle points to guide the robot away from the real
+  obstacles and toward the real goal.</li>
+<li>Implementation can be done in C/C++ or MATLAB on top of the provided support code</li>
+</ul>
+
+<p>
+Environment consists of a robot, a goal region represented as a
+circle, and several obstacles represented as circles as
+well. Graphical interface supports the dynamic addition and
+displacement of obstacles and goal. A new obstacle can be added at any
+time by pressing down the left button of the mouse. Each obstacle and
+the goal can be moved around by clicking inside them and holding the
+left button down while moving the mouse.  To run the planner, user
+needs to press the key 'p' on the keyboard. Pressing 'p' again toggles
+between running and stopping the planner. User can change the radius
+of each obstacle and the goal by first pressing the key 'r' and then
+clicking inside an obstacle/goal, holding the left-button down while
+moving the mouse.  Pressing 'r' again toggles between editing radius
+or moving the obstacles and the goal.
+</p>
+
+<p><strong>Implementation Notes: Rigid Body</strong></p>
+
+
+
+<p>
+Simulator provides access to goal center, goal radius, number of
+obstacles, current robot configuration (robot x, robot y, robot
+theta), and vertices of the polygon representing the robot.
+Simulator also computes the closest point on the i-th obstacle for any
+given point (x, y), see function <b>ClosestPointOnObstacle</b>
+</p>
+
+<p>
+When computing the potential, it is recommended that you use each
+vertex of the polygon robot as a control point. 
+<ul>
+<li>
+For each control
+point (xj, yj), you should then
+<ul>
+<li>compute its Jacobian matrix Jac<sub>j</sub></li>
+<li>compute the workspace gradient (wsg<sub>i</sub>) to each obstacle
+  [In my implementation, wsg<sub>i</sub> is zero if  the
+  distance from (xj, yj) to the closest point on the i-th obstacle is larger than a
+  small constant. I then scale the gradient in order to ensure that
+  the robot gets pushed away when coming 
+  close to the obstacles. You may need to play around in order to
+  figure out by how much to scale the gradient in order to get the
+  desired behavior.]</li>
+<li> use the Jacobian matrix to transform wsg<sub>i</sub> into a
+  configuration space gradient csg<sub>i</sub>, which is then added to
+  the overall configuration space gradient csg</li>
+<li>compute the workspace gradient to the goal, scale it appropriately,
+  transform it into a configuration space gradient via the Jacobian,
+  and add it to the overall configuration space gradient</li>
+</ul>
+</li>
+<li>Now that the overall configuration space gradient has been
+  computed, scale it so that you make a small move in x and y and a
+  small move in theta. Recall that the robot should always move in
+  direction opposite to the gradient. </li>
+</ul>
+</p>
+
+<p>
+If using <b>C++</b> support code, you should implement the
+function <b>ConfigurationMove</b> in the
+class <b>RigidBodyPlanner.</b> This function should
+return <b>RigidBodyMove</b>, which represents a small move (dx, dy,
+dtheta) by the robot.
+If using <b>Matlab</b> support code, you should implement the
+function <b>RigidBodyPlanner</b>. 
+</p>
+
+
+<p><strong>Implementation Notes: Manipulator Chain</p></strong>
+
+<p>
+Environment consists of a 2d manipulator chain, a goal region
+represented as a circle, and several obstacles represented as circles
+as well.
+Simulator provides access to goal center, goal radius, number of
+obstacles, and start and end positions of each link in the chain.
+Simulator also computes the closest point on the i-th obstacle for any
+given point (x, y), see function <b>ClosestPointOnObstacle</b>
+Moreover, simulator also implements Forward Kinematics, see
+function <b>FK</b>.
+</p>
+
+<p>
+When computing the potential, it is recommended that you use the end
+position of each chain link as a control point. You should follow a
+similar approach as in the case of rigid bodies. One difference is
+that in the case of the manipulator chain, the attractive potential
+should be computed only between the end effector (last point in the
+chain) and the goal and not between any intermediate links and the
+goal. In this way, the potential will guide the end effector and not
+the intermediate links toward the goal. The repulsive potential, as in
+the case of rigid bodies, should be computed between the end of each
+link and each obstacle.
+</p>
+
+<p>
+<b>Important:</b> You can use an equivalent but easier to compute
+definition of the Jacobian. In this definition the partial derivative
+of the forward kinematics of the end position of the j-th joint with
+respect to the i-th joint angle with i <= j is given as
+
+<ul>
+<li> x = -LinkEndY(j) + LinkStartY(i)</li>
+<li> y =  LinkEndX(j) - LinkStartX(i)</li>
+</ul>
+</p>
+
+<p>
+If using <b>C++</b> support code, you should implement the
+function <b>ConfigurationMove</b> in the
+class <b>ManipPlanner.</b> This function should compute small moves
+for each link angle.
+If using <b>Matlab</b> support code, you should implement the
+function <b>ManipPlanner</b>. 
+</p>
+
+<p><strong>Support Code: C++</strong></p>
+<ul>
+<li>Support code can be found in CppRigidBodyPFP and CppManipPFP</li>
+<li>To compile the code inside each directory use similar steps as in
+  the case of the bug algorithms in project 1</li>
+<li>The rigid body program can be run on Windows as
+<b>bin\Debug\Planner.exe robotL.txt</b> and on Linux/MacOS as
+<b>bin/Planner robotL.txt</b>
+where the argument is the name of the robot file. You can use one of
+the provided files or create your own.
+</li>
+<li>The manipulator chain program can be run on Windows as
+<b>bin\Debug\Planner.exe nrLinks linkLength</b> and on Linux/MacOS as
+<b>bin/Planner nrLinks linkLength</b>
+where <b>nrLinks</b> is a positive integer representing the number of
+links and <b>linkLength</b> is a positive real representing the length
+of each link.
+</li>
+</ul>
+
+<p><strong>Support Code: MATLAB</strong></p>
+<ul>
+<li> Support code can be found in MatlabRigidBodyPFP and MatlabManipPFP</li>
+<li>The rigid body program can be run as
+<b>RunRigidBodyPlanner('robotL.txt')</b> 
+where the argument is the name of the robot file. You can use one of
+the provided files or create your own.
+</li>
+<li>The manipulator chain program can be run as
+<b>RunManipPlanner(nrLinks, linkLength)</b>
+where <b>nrLinks</b> is a positive integer representing the number of
+links and <b>linkLength</b> is a positive real representing the length
+of each link.
+</li>
+</ul>
+
+<p class="article-title"><a name="Project3MP" href="#Project3MP">Project 3: Sampling-based Motion Planning</a></p>
+<p class="article-subtitle"><a href="teaching/Project3MP.zip">[support code in C++ and Matlab]</a></p>
+
+<p> 
+In this project, you will implement several sampling-based motion
+planners.
+<ul>
+  <li> <b>ExtendTree(vid, sto)</b> (<b>40pts</b>)
+  <ul>
+   <li> Function should extend the tree from the vertex with
+        index <tt>vid</tt> to the state <tt>sto</tt></li>
+   <li> Each step should be small, i.e., as specified by <tt>distOneStep</tt></li>
+   <li> Each valid intermediate step should be added to the tree</li>
+   <li> Function should stop if an invalid intermediate step is
+        encountered or if the goal is reached</li>
+  </ul>   
+  </li>
+  <li> <b>ExtendRandom()</b> (<b>15pts</b>) 
+  <ul>
+     <li>Function should select the random state <tt>sto</tt> from the
+     goal region with small probability <tt>p = 0.1</tt> and from the
+     entire bounding box with probability <tt>1 - p</tt> (using
+     the <tt>SampleState</tt> function)</li>
+     <li>Function should select the vertex <tt>vid</tt> uniformly at random from all the
+          tree vertices</li>
+    <li> After selections are made, function calls <tt>ExtendTree(vid, sto)</tt></li>
+  </ul>
+  </li>
+
+  <li> <b>ExtendRRT()</b> (<b>20pts</b>) 
+  <ul>
+     <li>Function should select the random state <tt>sto</tt> as
+     described in <tt>ExtendRandom</tt></li>
+     <li>Function should select the vertex <tt>vid</tt> as the
+     closest tree vertex to <tt>sto</tt></li>
+    <li> After selections are made, function calls <tt>ExtendTree(vid, sto)</tt></li>
+  </ul>
+  </li>
+
+  <li> <b>ExtendEST()</b> (<b>15pts</b>) 
+  <ul>
+     <li>Function should select the random state <tt>sto</tt> as
+     described in <tt>ExtendRandom</tt></li>
+     <li>Function should select the vertex <tt>vid</tt> with
+     probability proportional to a weight defined in terms of the
+     number of children coming out of vertex <tt>vid</tt>
+    <li> After selections are made, function calls <tt>ExtendTree(vid, sto)</tt></li>
+  </ul>
+  </li>
+
+  <li> <b>ExtendMyApproach()</b> (<b>20pts</b>) 
+  <ul>
+     <li>Your approach should show some originality</li>
+     <li>It should at least outperform <tt>ExtendRandom</tt> and <tt>ExtendEST</tt></li>        
+  </ul>
+  </li>
+
+  <li> <b>Written Report with your Approach Description and Experimental Results</b> 
+    <ul>
+       <li> If not properly done, up to <b>-15pts</b> will be taken off</li>
+       <li> Report should include high-level description of your
+	    approach as well as pseudo-code</li>
+       <li> When describing your approach, you should highlight its
+            advantages and disadvantages over the other
+            algorithms</li>
+       <li> Experimental results will be obtained by running each
+             method on each provided scene for at least ten
+             times. If a run takes more than ten minutes, you should
+             stop it. You will then present in a table (for each
+             combination of method and scene) the average time, mean
+             time, and the percentage of solutions</li>
+    </ul>
+  </li>
+</ul>
+</p>
+
+<p>
+Environment consists of a robot, a goal, and obstacles (all
+represented as circles). Graphical interface supports the dynamic
+addition and displacement of obstacles and goal. A new obstacle can be
+added at any time by pressing down the left-button of the mouse. Each
+obstacle and the goal can be moved around by clicking inside them and
+holding the left-button down while moving the mouse.  User can change
+the radius of each obstacle and the goal by first pressing the key 'r'
+and then clicking inside an obstacle/goal, holding the left-button
+down while moving the mouse.  Pressing 'r' again toggles between
+editing radius or moving the obstacles and the goal.
+</p>
+
+<p>
+First edit the scene and then run the planner. Do not make changes
+  to the scene once the planner has started. Also do not change the
+  initial position of the robot via the graphical interface, but use
+  instead the input text file.
+</p>
+
+<ul>
+<li>ExtendRandom can be run by pressing 1</li>
+<li>ExtendRRT can be run by pressing 2</li>
+<li>ExtendEST can be run by pressing 3</li>
+<li>ExtendMyApproach can be run by pressing 4</li>
+</ul>
+
+<p>Pressing 'p' toggles
+between running and stopping the planner. </p>
+
+<p><strong>Support Code: C++</strong></p>
+<ul>
+<li>Support code can be found in CppMP</li>
+<li>To compile the code inside each directory use similar steps as in
+  the case of the bug algorithms in project 1</li>
+<li>The rigid body program can be run on Windows as
+<b>bin\Debug\Planner.exe Scene1.txt</b> and on Linux/MacOS as
+<b>bin/Planner Scene1.txt</b>
+where the argument is the name of the input file. You can use one of
+the provided files or create your own.
+</li>
+</ul>
+
+<p><strong>Support Code: MATLAB</strong></p>
+<ul>
+<li> Support code can be found in MatlabMP</li>
+<li>The program can be run as
+<b>RunPlanner('Scene1.txt')</b> 
+where the argument is the name of the input file. You can use one of
+the provided files or create your own.
+</li>
+<li>Use the ESC key to terminate program and then close figure window</li>
+</ul>
+
+<p class="article-title"><a name="ProjectFinal" href="#ProjectFinal">Final Project</a></p>
+
+<p>For the final project, you can work on your own or with at most two other students. Each team can select from the list of final projects described below or propose their own.
+</p>
+
+<ul>
+<li><strong>Motion Planning for Robots with Differential Constraints</strong>
+
+<p>
+Robot motions need to obey physical constraints due to underlying robot dynamics, e.g., a car cannot just move in any direction.
+To account for physical constraints, robot motions are often expressed as a set of differential equations
+<center><tt>x' = f(x, u)</tt></center>
+where <tt>x</tt> denotes the state of the robot and <tt>u</tt> denotes the input control applied to the robot. The state can be thought of
+as augmented configuration, which describes velocity, steering wheel angle, and other components in addition to the robot
+position and orientation. The control u is an external input that is applied to the robot to control its motions. For example, car
+is controlled by applying acceleration and rotational velocity of steering wheel.
+For the final project, you could implement a sampling-based approach to solve the motion-planning problem in the case of
+robots with differential constraints.
+</p>
+</li>
+
+<li><strong>Motion Planning for Multiple Robots</strong>
+
+<p>
+Given several robots <tt>Robot<sub>1</sub>,...,Robot<sub>N</sub></tt>, initial configurations 
+<tt>qinit<sub>1</sub>,...,qinit<sub>N</sub></tt>, and goal configurations <tt>qgoal<sub>1</sub>,...,qgoal<sub>N</sub></tt>
+the objective is to compute for each <tt>Robot<sub>i</sub></tt> a path from <tt>qinit<sub>i</sub></tt> to <tt>qgoal<sub>i</sub></tt> that avoids collisions not only with the obstacles but also with the other robots.
+Motion-planning approaches for multiple robots can be divided into three categories: centralized planning, decoupled planning,
+and prioritized planning.
+<ul>
+<li> Centralized planning treats the robots as just one robot whose configuration space
+consists of the composition of the configuration spaces of all the individual robots</li>
+<li> Decoupled planning first plans paths for each robot from its initial to its goal configuration such that the path
+avoids collisions with obstacles. When planning for the <tt>i</tt>-th robot all the other robots are completely ignored. At a second
+stage, the individual robot paths are coordinated so that collisions among robots are also avoided.
+</li>
+<li>Prioritized planning provides an in-between strategy. Similar to decoupled planning, paths are planned for each
+robot individually. However, when planning the path for the <tt>i</tt>-th robot, prioritized approaches treat the robots
+<tt>1,...,i-1</tt> as moving obstacles. The objective is then to plan the path for the <tt>i</tt>-th robot so that not only avoids collisions
+with the obstacles but it also avoids collisions with the previous robots which are moving according to their planned paths</li>
+</ul>
+For the final project, you could implement one of the above approaches.
+</li>
+
+<li><strong>Manipulation Planning</strong>
+<p>
+The objective in manipulation planning is to be able for the robot to grasp an object and place it in a different configuration
+while avoiding collisions with obstacles. Note that as part of the solution it may be necessary for the robot to temporarily lay
+the object on the ground and re-grasp it at a different position.
+For the final project, you could implement a sampling-based approach for manipulation-planning problems. In particular,
+you could implement FuzzyPRM (Nielson, Kavraki: “A two Level Fuzzy PRM for Manipulation Planning”, IROS 2000, pp.
+1716–1722), which has been shown to effectively solve manipulation-planning problems.
+</p>
+</li>
+
+<li><strong>Improved Sampling-based Motion Planners</strong>
+<ul>
+<li>ESTGrid as discussed in class</li>
+<li><a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.188.140">Anytime RRTs</a></li>
+<li><a href="http://homepages.laas.fr/jcortes/Papers/jaillet_aaaiWS08.pdf">Transition-based RRT for Path Planning in Continuous Cost Spaces</a></li>
+</ul>
+<p></p>
+</li>
+
+<li><strong>Robot Localization</strong>
+<p>
+In this setting, the objective is to estimate the global pose of the robot based on a model of its motions and sensor measurements.
+You can use various approaches, such as Kalman filters, Particle filters, etc.
+</p>
+</li>
+</ul>
+
+</div> <!-- end left column-->
+
+<div class="column coltwo">
+
+<div class="sidebar", style="border-style:none">
+<ul>
+<li><a href="#Desc">Course Description</a></li>
+<li><a href="#Syllabus">Syllabus and Lectures</a></li>
+<li><a href="#Project1Bug">Project 1: Bug Algorithms</a></li>
+<li><a href="#Project2PF">Project 2: Potential Fields</a></li>
+<li><a href="#Project3MP">Project 3: Sampling-based Motion Planning</a></li>
+<li><a href="#ProjectFinal">Final Project</a></li>
+<li><a href="#Movies">Movie Illustrations</a></li>
+</ul>
+</div>
+
+
+<a href="http://mitpress.mit.edu/catalog/item/default.asp?sid=27038065-E724-44D\4-BF78-A52605ADA740&ttype=2&tid=10340"><img src="figs/figBookMP.jpg" style="width:170px"/></a>
+
+<a href="http://planning.cs.uiuc.edu/"><img src="figs/figBookLaValle.jpg" style="width:120px"/></a>
+
+<p class="caption">
+<a href="#Movies" name="Movies">Illustrations</a> of bug algorithms, potential fields, and sampling-based motion planners.
+</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/nnrmZS3khA8?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Bug0 algorithm</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/HPV7mO8POYo?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Bug1 algorithm</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/Z70hrAUewhI?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Bug2 algorithm</p>
+
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/NB40y1KWJwA?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Potential field path planner for rigid bodies</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/umG-bTQ-e-8?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Potential field path planner for articulated chain</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/q6ZGYkHGOHM?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Potential field path planner getting stuck in local minima</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/zUdmtZm66kI?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Potential field path planner with moving obstacles</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/pVShXKEVk5U?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Rapidly-exploring Random Tree (RRT) path planner</p>
+
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/xAJ3ncB_Lrg?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Expansive-Space Tree with Grid (ESTGrid) path planner</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/NqE8sPf9gn0?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Phuong Pham: Motion planning with moving obstacles RRT combined with potential fields (in simulation)</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/Hen7__YBvvA?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Phuong Pham: Motion planning with moving obstacles (using the iRobot Create)</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/danFkDkMWOs?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Phuong Pham: Motion planning with moving obstacles (using the iRobot Create)</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/Kz74YAX_7Hg?rel=0" frameborder="0" allowfullscreen></iframe> 
+<p class="caption">Minh Le: Motion planning with multiple goals (in simulation)</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/dUnschWNRrE?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Minh Le: Motion planning with multiple goals (using the iRobot Create)</p>
+
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/diM1-n4NHOY?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Motion planning with differential constraints (second-order dynamics model of a differential drive)</p>
+
+<iframe width="300" height="300" src="http://www.youtube.com/embed/C7lr3ufC3vE?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="caption">Motion planning with differential constraints (second-order dynamics model of a car-like robot)</p>
+
+
+
+</ul>
+
+</div>
+</div>
+</div>
+
+
+</body>
+<footer class="myfooter">
+</footer>
+</html>
+
+
+
+
+
+
