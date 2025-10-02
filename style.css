@@ -44,6 +44,17 @@ body {
   font-size: 1.25rem;
   color: #FFFFFF;
 }
+.brand a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.brand a:hover,
+.brand a.active {
+  color: #00A3FF; /* bright blue accent */
+ }
 
 .nav-links {
   display: flex;
