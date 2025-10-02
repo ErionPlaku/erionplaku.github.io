@@ -1,0 +1,303 @@
+/* Base */
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: #f0f4f8; /* very light background */
+  color: #6B7280;
+  line-height: 1.8;
+ }
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #003366; /* deep professional blue */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: relative;
+
+ }
+ 
+ 
+
+.brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #FFFFFF;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+ }
+
+.nav-links a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #00A3FF; /* bright blue accent */
+ }
+
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media(max-width: 768px) {
+  .nav-links {
+    /*position: absolute;
+    top: 60px;
+    right: 0;
+   
+      top: 60px;
+    right: 0;*/
+    
+     flex-direction: column;
+    background: #003366;
+    width: 100%;
+    padding: 1rem;
+    margin-left: 100%;    /* pushes menu slightly down from toggle */
+
+    display: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+    color: #FFFFFF;
+  }
+}
+
+/* Hero Section Horizontal */
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 900px;       /* same width as content */
+  margin: auto;
+  padding: 7rem 1rem 4rem;
+  background: linear-gradient(135deg, #e6f2ff 0%, #cce6ff 100%);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.hero {
+  margin-bottom: 2rem; /* vertical space between hero and first card */
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 0.5rem;
+}
+
+.job-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #007ACC;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #333333;
+}
+
+/* Cards */
+.card {
+  background: #f0f8ff; /* subtle light blue */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+.card a {
+  color: #007ACC;
+  text-decoration: none;
+}
+
+.card a:hover {
+  color: #004080;
+  text-decoration: underline;
+}
+
+.card-content-horizontal {
+    display: flex;
+    align-items: flex-start; /* align top of text with image */
+    gap: 1.5rem;             /* space between image and text */
+}
+
+.card-content-horizontal img {
+    width: 100%;       /* or 45–50% depending on balance */
+    height: auto;
+    object-fit: cover;  /* makes image fill container if it’s smaller */
+    border-radius: 6px;
+    flex-shrink: 0;   /* prevents image from shrinking */
+}
+
+.card-content-horizontal p {
+    flex: 1;          /* text takes remaining space */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #003366;
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border-top: 4px solid #00A3FF;
+}
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 5rem 1rem 3rem;
+  }
+
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .job-title {
+    font-size: 1rem;
+  }
+}
+
+
+/* ===== Publications Page Styling ===== */
+
+/* Global paper counter starts at the latest paper number */
+body {
+  counter-reset: paper-counter 101; /* replace 98 with your latest paper number */
+}
+
+/* Publications list */
+.publications-list {
+  list-style: none;           /* remove default bullets/numbers */
+  padding-left: 0;            /* remove default padding */
+}
+
+/* Each list item uses the counter for reverse numbering */
+.publications-list li {
+  counter-increment: paper-counter -1; /* decrement for reverse numbering */
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 3rem;        /* space for number */
+  font-size: 1rem;
+}
+
+/* Number displayed before each item */
+.publications-list li::before {
+  content: counter(paper-counter);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #003366;            /* site accent */
+  font-size: 1.1rem;
+}
+
+/* Year headings */
+.year-heading {
+  color: #003366;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Paper titles */
+.publications-list li em.ptitle {
+  font-style: italic;
+  color: #6495ED; /* bright blue for titles */
+  font-size: 1.05rem; 
+}
+
+/* Conference/journal names */
+.publications-list li em:not(.ptitle) {
+  font-style: italic;
+  font-weight: 400;
+  color: #1F4E79; /* lighter blue for venues */
+}
+
+/* Publisher links */
+.publications-list li a {
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #4682B4; /* green accent for publisher links */
+}
+
+.publications-list li a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Smooth scroll for anchor links */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+}
+
