@@ -73,12 +73,9 @@ body {
 
 @media(max-width: 768px) {
   .nav-links {
-    /*position: absolute;
+    position: absolute;
     top: 60px;
     right: 0;
-   
-      top: 60px;
-    right: 0;*/
     
      flex-direction: column;
     background: #003366;
