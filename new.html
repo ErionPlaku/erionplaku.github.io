@@ -92,15 +92,19 @@
 
         /* Hero Section */
         header {
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-left:1em;
+    padding-top: 140px;          /* height of nav + extra spacing */
+             min-height: calc(100vh - 140px); /* adjust for padding */
+    scroll-margin-top: 140px;    /* same as nav height */
         }
-
+ 
+    
         .hero-title {
             font-size: 8vw;
             font-weight: 900;
@@ -271,6 +275,7 @@
             opacity: 0;
             transform: translateY(50px);
             transition: all 1s ease;
+            scroll-margin-top: 80px; /* height of your fixed nav */
         }
 
         .section.visible {
@@ -617,6 +622,61 @@ nav a.cv-button:hover {
     transform: translateY(-2px);
 }
 
+/* New stuff for menu*/
+/* Wrap existing nav buttons for mobile toggle */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Hamburger toggle button - hidden by default */
+.nav-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Show hamburger in mobile */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        display: none; /* hidden by default */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-buttons.show {
+        display: flex;
+    }
+
+    .nav-buttons button, .nav-buttons a.cv-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        font-size: 0.9em;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -625,16 +685,22 @@ nav a.cv-button:hover {
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
 
-    <nav>
+<nav>
+    <button class="nav-toggle">&#9776;</button> <!-- Hamburger icon -->
+    <div class="nav-buttons">
         <button onclick="scrollToSection('job')" class="active">About</button>
         <button onclick="scrollToSection('summary')">Summary</button>
         <button onclick="scrollToSection('leadership')">Leadership</button>
         <button onclick="scrollToSection('research')">Research</button>
-        <a href="ErionPlaku_CV.pdf" target="_blank" class="cv-button">CV</a>
+        <a href="cv.pdf" class="cv-button">CV</a>
         <button onclick="scrollToSection('publications')">Publications</button>
-    </nav>
+        <button onclick="scrollToSection('disclaimer')">Disclaimer</button>
+    </div>
+</nav>
 
-<header id="job">
+
+
+<header id="job" >
     <div class="profile-photo">
         <img src="figs/plaku.jpg" alt="Erion Plaku" />
     </div>
@@ -1684,24 +1750,16 @@ nav a.cv-button:hover {
 </section>
 
 
-</div>
+<section id="disclaimer">
+<h2 class="section-title">Disclaimer</h2>
 
-<footer style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 12px 20px;
-    background: rgba(10, 10, 10, 0.6); /* matches page background */
-    backdrop-filter: blur(20px);        /* glass effect */
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.85em;
-    z-index: 10000;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-">
-    Disclaimer: Any postings on this site are my own and do not necessarily represent NSF's positions, strategies, or opinions.
-</footer>
+<p style="margin-bottom:20px">
+    Any postings on this site are my own and do not necessarily represent NSF's positions, strategies, or opinions.
+    </p>
+</section>
+
+
+</div>
 
     <script>
         function scrollToSection(id) {
@@ -1791,5 +1849,23 @@ document.querySelectorAll('.section').forEach(section => {
 });
 
     </script>
+<script>
+const toggle = document.querySelector('.nav-toggle');
+const buttons = document.querySelector('.nav-buttons');
+
+toggle.addEventListener('click', () => {
+    buttons.classList.toggle('show');
+});
+
+// Close menu after clicking a nav button (mobile only)
+const navItems = buttons.querySelectorAll('button, a.cv-button');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (buttons.classList.contains('show')) {
+            buttons.classList.remove('show');
+        }
+    });
+});
+</script>
 </body>
 </html>
