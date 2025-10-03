@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erion Plaku</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0080, #7928ca, #0070f3, #00dfd8, #ff0080);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.15;
+            filter: blur(60px);
+        }
+
+        @keyframes gradientShift {
+            0% { transform: translate(0%, 0%) rotate(0deg); }
+            50% { transform: translate(20%, 20%) rotate(180deg); }
+            100% { transform: translate(0%, 0%) rotate(360deg); }
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #aaaaff, transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            animation: float 18s infinite ease-in-out; 
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #7928ca, transparent);
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+            animation: float 22s infinite ease-in-out; 
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #0070f3, transparent);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 14s;
+            animation: float 20s infinite ease-in-out; 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(40px, 20px) scale(1.05); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-left:1em;
+    padding-top: 140px;          /* height of nav + extra spacing */
+             min-height: calc(100vh - 140px); /* adjust for padding */
+    scroll-margin-top: 140px;    /* same as nav height */
+        }
+ 
+    
+        .hero-title {
+            font-size: 8vw;
+            font-weight: 900;
+            /*background: linear-gradient(135deg, #fff 0%, #00dfd8 50%, #7928ca 100%);*/
+            background: linear-gradient(135deg, #e0f7ff 0%, #4da6ff 50%, #0070f3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: titleAppear 1s ease forwards;
+            opacity: 0;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .profile-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 40px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 60px rgba(0, 223, 216, 0.4), 0 0 100px rgba(121, 40, 202, 0.3);
+            animation: photoAppear 1s ease forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0080, #7928ca, #0070f3, #00dfd8);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes photoAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                transform: translateY(30px);
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes titleAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                transform: translateY(30px);
+            }
+        }
+        
+        .hero-subtitles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* vertical spacing between lines */
+    margin-top: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.hero-subtitle span.highlight {
+    color: #00dfd8; /* accent color to highlight keywords */
+    font-weight: 600;
+}
+
+.hero-subtitle.tagline {
+    font-size: 1.5em;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 40px;
+    text-shadow: 0 0 8px rgba(0,223,216,0.4), 0 0 20px rgba(121,40,202,0.3);
+}
+
+
+        .hero-subtitle {
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.7);
+            animation: titleAppear 1s ease 0.3s forwards;
+            opacity: 0;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .scroll-indicator {
+          position: relative; /* relative to hero content */
+    display: block;
+    margin: 40px auto 0; /* space below tagline */
+    animation: bounce 2s infinite;
+    opacity: 0.5;
+    /*
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0.5;*/
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            animation: navAppear 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        @keyframes navAppear {
+            to { opacity: 1; }
+        }
+
+        nav button {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaaaFF;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        nav button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        nav button.active {
+background: linear-gradient(135deg, #1e3c72, #2a5298);
+     /*  background: linear-gradient(135deg, #2222ff, #4444ff);/*#ff0080, #7928ca);*/
+            border-color: transparent;
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            scroll-margin-top: 80px; /* height of your fixed nav */
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 5em;
+            font-weight: 900;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #a0cfff, #4a90ff, #001f7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        /* Glass Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+	h3
+	{
+	   color: #4a90ff;
+         
+	}
+	
+        .card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #4a90ff;
+            font-weight: 700;
+        }
+
+        .card .date {
+            color: #ff0080;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(121, 40, 202, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #999999, #bbbbdd, #0070f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* Publication Cards */
+        .pub-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 4px solid #7928ca;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .pub-card:hover {
+            border-left-width: 8px;
+            border-left-color: #ff0080;
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .pub-title {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .pub-authors {
+            color: #00dfd8;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .pub-venue {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        .pub-link {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1em;
+            font-style: italic;
+        }
+        
+        .pub-link a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+.pub-link a:hover {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+}
+
+/*********************************/
+/* Publications list */
+
+/* Global paper counter starts at the latest paper number */
+body {
+  counter-reset: paper-counter 101; /* replace 101 with your latest paper number */
+}
+
+/* Remove default list styling */
+.publications-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Each list item uses the counter for reverse numbering */
+.publications-list li {
+  counter-increment: paper-counter -1; /* decrement for reverse numbering */
+  color: #ccccff;                        /* light gray for authors/general text */
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 3rem;                  /* space for number */
+}
+
+/* Number displayed before each item */
+.publications-list li::before {
+  content: counter(paper-counter);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #886fff;                       /* warm coral accent for numbers */
+  font-size: 1.3em;
+}
+
+/* Year headings */
+.year-heading {
+  color: #eedfd8;                        /* bright cyan for year headings */
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* Paper titles */
+.publications-list li em.ptitle {
+  font-style: italic;
+  color: #4fc3f7;                        /* golden yellow for titles */
+  font-size: 1.05rem; 
+}
+
+/* Conference/journal names */
+.publications-list li em:not(.ptitle) {
+  font-style: italic;
+  font-weight: 400;
+  color: #90a4ae;                        /* soft bluish gray for venues */
+}
+
+/* Publisher / links */
+.publications-list li a {
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #8888ff;                        /* soft cyan for links */
+}
+
+.publications-list li a:hover {
+  color: #bbbbff;                         /* highlight color on hover */
+  text-decoration: none;
+}
+
+/****************************************/
+
+        
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ff0080, #7928ca, #0070f3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -56px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ff0080;
+            border: 3px solid #0a0a0a;
+            box-shadow: 0 0 20px #ff0080;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 15vw;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+
+            nav {
+                top: 20px;
+                right: 20px;
+                flex-wrap: wrap;
+            }
+
+            nav button {
+                padding: 12px 20px;
+                font-size: 0.8em;
+            }
+
+            .section-title {
+                font-size: 3em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+.badge {
+    display: inline-block;
+    background: rgba(74, 144, 255, 0.2); /* soft translucent blue */
+    color: #4a90ff;                      /* vibrant blue text */
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(74, 144, 255, 0.3); /* soft border in same blue */
+}
+
+        
+        nav a.cv-button {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaaaff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+nav a.cv-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* New stuff for menu*/
+/* Wrap existing nav buttons for mobile toggle */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Hamburger toggle button - hidden by default */
+.nav-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Show hamburger in mobile */
+@media (max-width: 768px) {
+.section {
+        overflow: visible;
+    }
+    
+    .pub-card {
+        display: block !important;
+    }
+    .publications-list {
+        display: block !important;
+    }
+    #publications.section {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+    
+    .grid {
+        grid-template-columns: 1fr; /* force single column */
+        gap: 20px;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        display: none; /* hidden by default */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-buttons.show {
+        display: flex;
+    }
+
+    .nav-buttons button, .nav-buttons a.cv-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        font-size: 0.9em;
+    }
+    
+    /* Reduce padding for all card types */
+    .card, .pub-card, .stat-card {
+        padding: 20px;         /* smaller padding for mobile */
+        margin-bottom: 20px;   /* slightly tighter spacing */
+    }
+
+    /* Reduce font size slightly to fit content better */
+    .card p, .pub-card li, .stat-card {
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    .pub-card .pub-title {
+        font-size: 1.2em;      /* reduce title size slightly */
+    }
+
+    .stat-card .stat-number {
+        font-size: 2.5em;      /* scale down numbers for small screens */
+    }
+
+    /* Reduce badges inside cards */
+    .badge {
+        padding: 6px 14px;
+        font-size: 0.8em;
+    }
+
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+<nav>
+    <button class="nav-toggle">&#9776;</button> <!-- Hamburger icon -->
+    <div class="nav-buttons">
+        <button onclick="scrollToSection('job')" class="active">About</button>
+        <button onclick="scrollToSection('summary')">Summary</button>
+        <button onclick="scrollToSection('leadership')">Leadership</button>
+        <button onclick="scrollToSection('research')">Research</button>
+        <a href="ErionPlaku_CV.pdf" class="cv-button">CV</a>
+        <button onclick="scrollToSection('publications')">Publications</button>
+        <button onclick="scrollToSection('disclaimer')">Disclaimer</button>
+    </div>
+</nav>
+
+
+
+<header id="job" >
+    <div class="profile-photo">
+        <img src="figs/plaku.jpg" alt="Erion Plaku" />
+    </div>
+
+<h1 class="hero-title">ERION PLAKU</h1>
+
+<div class="hero-subtitles">
+    <p class="hero-subtitle">Acting Senior Advisor for Artificial Intelligence</p>
+    <p class="hero-subtitle">Directorate for Computer and Information Science and Engineering (CISE)</p>
+    <p class="hero-subtitle">U.S. National Science Foundation (NSF)</p>
+    <p class="hero-subtitle tagline">
+        <em>Driving impactful AI initiatives at the national level</em>
+    </p>
+</div>
+
+
+    <div class="scroll-indicator">
+        <svg width="30" height="50" viewBox="0 0 30 50">
+            <rect x="5" y="5" width="20" height="35" rx="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+            <circle cx="15" cy="15" r="3" fill="rgba(255,255,255,0.5)">
+                <animate attributeName="cy" from="15" to="30" dur="1.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite" />
+            </circle>
+        </svg>
+    </div>
+</header>
+
+<div class="container">
+      
+    
+<section id="summary" class="section visible">
+    <h2 class="section-title">Summary</h2>
+    <div class="card">
+        <p>
+            Dr. Erion Plaku is the Acting Senior Advisor for Artificial Intelligence in the Directorate for Computer and Information Science and Engineering (CISE) at the U.S. National Science Foundation (NSF). He also co-leads the National AI Research Institutes program, co-chairs the NSF AI Steering Committee, and co-chairs the Networking and Information Technology Research and Development (NITRD) AI R&D Interagency Working Group.
+            Prior to joining NSF, Dr. Plaku held tenured faculty appointments at George Mason University and the Catholic University of America. He earned his Ph.D. in Computer Science from Rice University and completed postdoctoral research at Johns Hopkins University.
+        </p>
+        <p style="margin-top:20px">
+            Dr. Plaku's research focuses on AI and robotics, with expertise in automated planning, high-level reasoning, autonomous systems, and AI-enabled decision-making. His work bridges foundational AI with real-world applications, advancing the development and deployment of autonomous systems.
+        </p>
+    </div>
+</section>
+
+
+<section id="leadership" class="section">
+    <h2 class="section-title">Leadership & Program Management</h2>
+
+    <div class="card">
+        <h3>Impact & Vision</h3>
+        <p style="margin: 20px 0;">
+            Through his work at NSF, Dr. Plaku drives high-impact research initiatives, fosters collaboration among disciplines, agencies, industry, and international partners, and advances AI innovations with broad scientific, technological, and national impact.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>AI Leadership at NSF</h3>
+        <p style="margin: 20px 0;">
+            Dr. Plaku serves as the Acting Senior Advisor for Artificial Intelligence in NSF’s CISE Directorate, providing senior expertise and strategic guidance on AI research directions, policy development, and coordination of cross-directorate and interagency initiatives. He co-chairs the NSF AI Steering Committee, offering leadership to align AI research priorities across NSF directorates. Additionally, he co-chairs the Networking and Information Technology Research and Development (NITRD) AI R&D Interagency Working Group, leading federal coordination of AI research and development across multiple agencies to reinforce U.S. leadership in the field. Dr. Plaku co-leads the National AI Research Institutes program, overseeing a $640 million investment in 29 AI institutes that foster collaboration among academia, government, and industry to accelerate impactful AI research and applications. He is also a program director for NSF’s Robust Intelligence program, which focuses on developing AI systems that are resilient and adaptable to real-world challenges.
+        </p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>NSF CISE</h3>
+            <div class="date">Senior Advisor for AI</div>
+            <p style="margin: 20px 0;">
+                Guiding research directions, policy development, and cross-directorate and cross-agency AI initiatives
+            </p>
+        </div>
+        <div class="card">
+            <h3>NSF AI Steering Committee</h3>
+            <div class="date">Co-Chair</div>
+            <p style="margin: 20px 0;">
+                Providing strategic leadership and coordination across NSF directorates to shape national AI research priorities and initiatives
+            </p>
+        </div>
+        <div class="card">
+            <h3>NITRD AI R&D IWG</h3>
+            <div class="date">Co-Chair</div>
+            <p style="margin: 20px 0;">
+                Leading interagency coordination of federal AI R&D efforts across 32 agencies, driving strategic initiatives to strengthen U.S. leadership in AI
+            </p>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>National AI Research Institutes</h3>
+            <div class="date">Co-Lead</div>
+            <div style="margin: 20px 0;">
+                <div class="stat-number" style="font-size: 3em;">$640M</div>
+                <div class="stat-label">Investment</div>
+            </div>
+            <p>
+                Overseeing 29 AI institutes to accelerate high-impact AI research and real-world applications, driving collaboration among academia, government, and industry leaders
+            </p>
+            <div style="margin-top: 15px;">
+                <span class="badge">29 AI Institutes</span>
+                <span class="badge">Academia+Industry+Government</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Robust Intelligence</h3>
+            <div class="date">Program Director</div>
+            <p style="margin-top: 20px;">
+                Managing core research program driving advancements in AI, machine learning, computer vision, human language technologies, and computational neuroscience
+            </p>
+            <div style="margin-top: 15px;">
+                <span class="badge">AI</span>
+                <span class="badge">ML</span>
+                <span class="badge">Computer Vision</span>
+                <span class="badge">Human-Language Technologies</span>
+                <span class="badge">Computational Neuroscience</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 40px;">
+        <h3>Robotics Leadership at NSF</h3>
+        <p style="margin-top: 20px;">
+            Dr. Plaku was instrumental in advancing robotics research at NSF, co-leading the Foundational Research in Robotics (FRR) and National Robotics Initiative (NRI), the agency's flagship programs in robotics. He also co-chaired the Interagency Working Group on Intelligent Robotics and Autonomous Systems (IRAS), coordinating federal R&D efforts across multiple agencies to accelerate progress in robotics and autonomous systems.
+        </p>
+        <div style="margin-top: 20px;">
+            <span class="badge">FRR Co-Lead</span>
+            <span class="badge">NRI Co-Lead</span>
+            <span class="badge">NITRD IRAS IWG Co-Chair</span>
+            <span class="badge">Interagency Coordination</span>
+        </div>
+    </div>
+
+    <div class="grid" style="margin-top: 40px;">
+        <div class="card">
+            <h3>International Collaborations</h3>
+            <p style="margin-top: 20px;">
+                Played a key role in advancing international partnerships, engaging with organizations such as Japan's Science and Technology Agency and the UK's Engineering and Physical Sciences Research Council
+            </p>
+            <div style="margin-top: 15px;">
+                <span class="badge">Japan JST</span>
+                <span class="badge">UK EPSRC</span>
+                <span class="badge">Global Partnerships</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="research" class="section">
+    <h2 class="section-title">Research</h2>
+
+    <div class="card">
+        <h3>Research Expertise</h3>
+        <p style="margin-top: 20px;">
+            Dr. Plaku is a leading expert in AI, specializing in planning, high-level reasoning, autonomous systems, and AI-driven decision-making. With a prolific academic career spanning over a decade, he has made significant contributions in AI and robotics, effectively bridging the gap between advanced AI and their real-world uses in robotics and autonomous systems. His work integrates advanced techniques in autonomous decision making, motion planning, and intelligent automation, along with cutting-edge developments in generative AI, large language models (LLMs), and foundational AI models. As a professor at George Mason University and the Catholic University of America, he conducted impactful research and mentored students in AI and robotics, contributing to significant advancements in AI-powered autonomy. Dr. Plaku has developed and released several open source software tools that advance AI, robotics, and autonomous systems, fostering collaboration, and broadening the impact of advanced technologies among researchers, students, educators, industry professionals, and practitioners.
+            </p>
+        <p style="margin-top: 20px;">
+            Dr. Plaku is actively engaged in advancing AI and robotics research, seeking to expand the capabilities of autonomous systems and intelligent decision making. His deep technical expertise, strategic vision, and experience managing high-impact AI programs allow him to make impactful contributions to AI innovation and the ongoing development of intelligent systems at scale.
+        </p>
+    </div>
+
+    <div class="grid" style="margin-top: 40px;">
+        <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years Academic Research</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Open</div>
+            <div class="stat-label">Source Software Tools</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">AI+</div>
+            <div class="stat-label">Robotics Integration</div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 40px;">
+        <h3 style="color:#88AACC">Industry Applications & Cross-Domain Impact</h3>
+ </div>
+
+        <div class="grid" style="margin-top: 40px;">
+            <div class="card">
+                <h3 style="color:#88AACC">Defense</h3>
+                <p>Delivered AI-powered autonomy across air, land, sea, and undersea platforms, enhancing mission success, resilience, and operational efficiency</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#88AACC">Healthcare & Medical Systems</h3>
+                <p>Applied AI in robotic-assisted surgery to improve precision, training efficacy, and patient safety in high-stakes clinical environments</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#88AACC">Manufacturing & Logistics</h3>
+                <p>Enabled intelligent mobility and coordination in warehouse automation, driving cost reduction, scalability, and supply chain optimization</p>
+            </div>
+        </div>
+   
+    <div class="card">
+        <h3 style="color:#AAAAFF">Robotics & Autonomous Systems</h3>
+ </div>
+
+        <div class="grid" style="margin-top: 40px;">
+            <div class="card">
+                <h3 style="color:#AAAAFF">Motion Planning</h3>
+                <p>Innovations in AI-integrated motion planning deployed across robotic domains to enable fast, efficient, and adaptive autonomy</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#AAAAFF">Task-Oriented Autonomy</h3>
+                <p>Advanced task and motion planning methods that empower robots to autonomously execute high-level missions with minimal supervision</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#AAAAFF">Multi-Robot Systems</h3>
+                <p>Scalable multi-robot motion planning and coordination strategies to enhance exploration, data collection, and infrastructure inspection</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#AAAAFF">Natural Language Integration</h3>
+                <p>Leveraged large language models to enable robots to understand and act on human intent expressed in natural language</p>
+            </div>
+        </div>
+   
+    <div class="card">
+        <h3 style="color:#4466CC">AI & Machine Learning</h3>
+    </div>
+
+        <div class="grid" style="margin-top: 40px;">
+            <div class="card">
+                <h3 style="color:#4466CC">AI-Driven Decision-Making</h3>
+                <p>Designed scalable decision systems combining search, planning, and reasoning to optimize complex, high-impact operations</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#4466CC">Generative AI & LLMs</h3>
+                <p>Integrated large language models to enhance knowledge access, automate reasoning, and strengthen human-AI collaboration</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#4466CC">Deep Learning & Reinforcement Learning</h3>
+                <p>Applied deep and reinforcement learning to enable real-time adaptation and performance optimization in dynamic environments</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#4466CC">Uncertainty & Probabilistic Modeling</h3>
+                <p>Advanced AI robustness through probabilistic reasoning and Bayesian inference for reliable decision-making under uncertainty</p>
+            </div>
+            <div class="card">
+                <h3 style="color:#4466CC">AI Scalability</h3>
+                <p>Scaled complex AI solutions using distributed computing frameworks to support large-scale planning, search, and learning</p>
+            </div>
+        </div>
+</section>
+
+
+<section id="publications" class="section">
+<h2 class="section-title">Publications</h2>
+                        
+<div class="grid" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+    <div class="stat-card">
+        <div class="stat-number">95+</div>
+        <div class="stat-label">papers</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">27</div>
+        <div class="stat-label">h-index</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">58</div>
+        <div class="stat-label">i10-index</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">3200+</div>
+        <div class="stat-label">citations</div>
+    </div>
+</div>
+
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2025</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Aghzal M, Yue X, <strong>Plaku E</strong>, and Yao Z (2025): 
+            <em class="ptitle">Evaluating Vision-Language Models as Evaluators in Path Planning.</em> 
+            <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition, in press</em>
+        </li>
+        <li>
+            Lu Y, Das D, <strong>Plaku E</strong>, and Xiao X (2025): 
+            <em class="ptitle">Multi-Goal Motion Memory.</em> 
+            <em>IEEE International Conference on Robotics and Automation, in press</em>
+        </li>
+    </ol>
+</div>
+
+<!-- 2024 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2024</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Bui H, <strong>Plaku E</strong>, and Stein G (2024):  
+            <em class="ptitle">Multi-Robot Guided Sampling-Based Motion Planning With Dynamics in Partially Mapped Environments.</em>  
+            <em>IEEE Access, vol. 12, pp. 56448–56460</em>  
+            <a href="https://ieeexplore.ieee.org/document/10500384">[publisher]</a>
+        </li>
+        <li>
+            Khanal A, Bui H, <strong>Plaku E</strong>, and Stein G (2024):  
+            <em class="ptitle">Learning-informed Long-Horizon Navigation under Uncertainty for Vehicles with Dynamics.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, in press</em>  
+            <a href="#">[publisher]</a>
+        </li>
+        <li>
+            Aghzal M, <strong>Plaku E</strong>, and Yao Z (2024):  
+            <em class="ptitle">Look Further Ahead: Testing the Limits of GPT-4 in Path Planning.</em>  
+            <em>Proceedings of the IEEE International Conference on Science and Engineering, pp. 1020–1027</em>  
+            <a href="https://ieeexplore.ieee.org/document/10711396">[publisher]</a>
+        </li>
+        <li>
+            Das D, Le Y, <strong>Plaku E</strong>, and Xiao X (2024):  
+            <em class="ptitle">Motion Memory: Leveraging Past Experiences to Accelerate Future Motion Planning.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 16467–16474</em>  
+            <a href="https://ieeexplore.ieee.org/document/10610790">[publisher]</a>
+        </li>
+        <li>
+            Aghzal M, <strong>Plaku E</strong>, and Yao Z (2024):  
+            <em class="ptitle">Can Large Language Models be Good Path Planners? A Benchmark and Investigation on Spatial-Temporal Reasoning.</em>  
+            <em>International Conference on Learning Representation, Workshop on Large Language Models for Agents</em>  
+            <a href="https://llmagents.github.io/">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2023 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2023</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2023):  
+            <em class="ptitle">Autonomous Data Collection with Dynamic Goals and Communication Constraints for Marine Vehicles.</em>  
+            <em>IEEE Transactions on Automated Science and Engineering, vol. 20, no. 3, pp. 1607–1620</em>  
+            <a href="https://ieeexplore.ieee.org/document/9934913">[publisher]</a>
+        </li>
+        <li>
+            McMahon J, Parker R, Baldoni P, Anstee S, and <strong>Plaku E</strong> (2023):  
+            <em class="ptitle">Simultaneous Survey and Inspection with Autonomous Underwater Vehicles.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 1–7</em>  
+            <a href="https://ieeexplore.ieee.org/document/10341736">[publisher]</a>
+        </li>
+        <li>
+            Le Y and <strong>Plaku E</strong> (2023):  
+            <em class="ptitle">Leveraging Single-Goal Predictions to Improve the Efficiency of Multi-Goal Motion Planning with Dynamics.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 850–857</em>  
+            <a href="https://ieeexplore.ieee.org/document/10341945">[publisher]</a>
+        </li>
+        <li>
+            Khanal A, Bui H, Stein G, and <strong>Plaku E</strong> (2023):  
+            <em class="ptitle">Guided Sampling-Based Motion Planning with Dynamics in Unknown Environments.</em>  
+            <em>Proceedings of the IEEE International Conference on Automation Science and Engineering, pp. 1–8</em>  
+            <a href="https://doi.org/10.1109/CASE56687.2023.10260357">[publisher]</a>
+        </li>
+        <li>
+            Plaku E, Cela A, and <strong>Plaku E</strong> (2023):  
+            <em class="ptitle">Robot Path Planning with Safety Zones.</em>  
+            <em>Proceedings of the International Conference of Informatics in Control, Automation and Robotics, pp. 405–412</em>  
+            <a href="https://www.scitepress.org/Papers/2023/121621/121621.pdf">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2022 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2022</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Baldoni P, McMahon J, and <strong>Plaku E</strong> (2022):  
+            <em class="ptitle">Leveraging Neural Networks to Guide Path Planning: Improving Dataset Generation and Planning Efficiency.</em>  
+            <em>Proceedings of the IEEE International Conference on Automation Science and Engineering, pp. 667–674</em>  
+            <a href="https://doi.org/10.1109/CASE49997.2022.9926637">[publisher]</a>
+        </li>
+        <li>
+            Bui H, Le Y, and <strong>Plaku E</strong> (2022):  
+            <em class="ptitle">Improving the Efficiency of Sampling-based Motion Planners via Runtime Predictions for Motion-Planning Problems with Dynamics.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 4486–4491</em>  
+            <a href="https://doi.org/10.1109/IROS47612.2022.9981753">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2021 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2021</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Zhang Y, Huang H, <strong>Plaku E</strong>, and Lap-Fai Y (2021):  
+            <em class="ptitle">Joint Computational Design of Workspaces and Workplans.</em>  
+            <em>SIGGRAPH Asia, vol. 48, no. 6, pp. 1–16</em>  
+            <a href="https://doi.org/10.1145/3478513.3480500">[publisher]</a>
+        </li>
+        <li>
+            Can Secim B, Kvelashvili T, Kilic O, and <strong>Plaku E</strong> (2021):  
+            <em class="ptitle">Antenna-Based Aerial Inspection of Nonflat Terrains Using Microwave Remote Sensing.</em>  
+            <em>Proceedings of the IEEE International Conference on Automation Science and Engineering, pp. 934–941</em>  
+            <a href="https://doi.org/10.1109/CASE49439.2021.9551639">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2021):  
+            <em class="ptitle">Dynamic Multi-Goal Motion Planning with Range Constraints for Autonomous Underwater Vehicles Following Surface Vehicles.</em>  
+            <em>Proceedings of the IEEE International Conference on Automation Science and Engineering, pp. 704–711</em>  
+            <strong>(Finalist Best Application Paper)</strong>  
+            <a href="https://doi.org/10.1109/CASE49439.2021.9551424">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2021):  
+            <em class="ptitle">Autonomous Data Collection With Timed Communication Constraints for Unmanned Underwater Vehicles.</em>  
+            <em>IEEE Robotics and Automation Letters, vol. 6, no. 2, pp. 1832–1839</em>  
+            <em>(also in IEEE International Conference on Robotics and Automation)</em>  
+            <a href="https://doi.org/10.1109/LRA.2021.3060709">[publisher]</a>
+        </li>
+        <li>
+            Le D and <strong>Plaku E</strong> (2021):  
+            <em class="ptitle">Multi-Robot Motion Planning with Unlabeled Goals for Mobile Robots with Differential Constraints.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 7950–7956</em>  
+            <a href="https://doi.org/10.1109/ICRA48506.2021.9560883">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2020 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2020</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Warsame Y, Edelkamp S, and <strong>Plaku E</strong> (2020):  
+            <em class="ptitle">Energy-Aware Multi-Goal Motion Planning Guided by Monte Carlo Search.</em>  
+            <em>Proceedings of the International Conference on Automation Science and Engineering, pp. 335–342</em>  
+            <a href="https://doi.org/10.1109/CASE48305.2020.9217008">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2019 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2019</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Molloy K, <strong>Plaku E</strong>, and Shehu A (2019):  
+            <em class="ptitle">ROMEO: A Plug-and-Play Software Platform of Robotics-Inspired Algorithms for Modeling Biomolecular Structures and Motions.</em>  
+            <em>arXiv, 1905.08331</em>  
+            <a href="https://arxiv.org/abs/1905.08331">[publisher]</a>
+        </li>
+        <li>
+            Edelkamp S, Warsame Y, and <strong>Plaku E</strong> (2019):  
+            <em class="ptitle">Monte-Carlo Search for Prize-Collecting Robot Motion Planning with Time Windows, Capacities, Pickups, and Deliveries.</em>  
+            <em>Springer LNCS Advances in Artificial Intelligence, vol. 11793, pp. 154–167</em>  
+            <a href="https://doi.org/10.1007/978-3-030-30179-8_13">[publisher]</a>
+        </li>
+        <li>
+            Le D and <strong>Plaku E</strong> (2019):  
+            <em class="ptitle">Multi-Robot Motion Planning with Dynamics via Coordinated Sampling-Based Expansion Guided by Multi-Agent Search.</em>  
+            <em>IEEE Robotics and Automation Letters, vol. 4, pp. 1868–1875</em>  
+            <a href="https://doi.org/10.1109/LRA.2019.2898087">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2018 Publications -->
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2018</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Le D and <strong>Plaku E</strong> (2018):  
+            <em class="ptitle">Cooperative, Dynamics-Based, and Abstraction-Guided Multi-Robot Motion Planning.</em>  
+            <em>Journal of Artificial Intelligence Research, vol. 63, pp. 361–390</em>  
+            <a href="https://doi.org/10.1613/jair.1.11244">[publisher]</a>
+        </li>
+        <li>
+            Morris D, Maximova T, <strong>Plaku E</strong>, and Shehu A (2018):  
+            <em class="ptitle">Attenuating Dependence on Structural Data in Computing Protein Energy Landscapes.</em>  
+            <em>BMC Bioinformatics, vol. 20, pp. 65–74</em>  
+            <a href="https://doi.org/10.1186/s12859-019-2822-5">[publisher]</a>
+        </li>
+        <li>
+            Plaku E, <strong>Plaku E</strong>, and Simari P (2018):  
+            <em class="ptitle">Clearance-driven Motion Planning for Mobile Robots with Differential Constraints.</em>  
+            <em>Robotica, vol. 36, pp. 971–993</em>  
+            <a href="https://doi.org/10.1017/S0263574718000164">[publisher]</a>
+        </li>
+        <li>
+            Edelkamp S, Lahijanian M, Magazzeni D, and <strong>Plaku E</strong> (2018):  
+            <em class="ptitle">Integrating Temporal Reasoning and Sampling-Based Motion Planning for Multi-Goal Problems With Dynamics and Time Windows.</em>  
+            <em>IEEE Robotics and Automation Letters, vol. 3, pp. 3473–3480</em>  
+            <a href="https://doi.org/10.1109/LRA.2018.2853642">[publisher]</a>
+        </li>
+        <li>
+            Qiao W, Akhterg N, Fang X, Maximova T, <strong>Plaku E</strong>, and Shehu A (2018):  
+            <em class="ptitle">From Mutations to Mechanisms and Dysfunction via Computation and Mining of Protein Energy Landscapes.</em>  
+            <em>BMC Genomics, vol. 19, pp. 671–683</em>  
+            <a href="https://doi.org/10.1186/s12864-018-5024-z">[publisher]</a>
+        </li>
+        <li>
+            Le D and <strong>Plaku E</strong> (2018):  
+            <em class="ptitle">Multi-Robot Motion Planning with Dynamics Guided by Multi-Agent Search.</em>  
+            <em>Proceedings of the International Joint Conferences on Artificial Intelligence, pp. 5314–5318</em>  
+            <a href="https://www.ijcai.org/proceedings/2018/744">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2017 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2017</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Maximova T, Zhang Z, Carr D, <strong>Plaku E</strong>, and Shehu A (2017):  
+            <em class="ptitle">Sample-based Models of Protein Energy Landscapes and Slow Structural Rearrangements.</em>  
+            <em>Journal of Computational Biology, vol. 25, pp. 33–50</em>  
+            <a href="https://doi.org/10.1089/cmb.2017.0158">[publisher]</a>
+        </li>
+        <li>
+            Edelkamp S, Pomarlan M, and <strong>Plaku E</strong> (2017):  
+            <em class="ptitle">Multi-Region Inspection by Combining Clustered Traveling Salesman Tours with Sampling-Based Motion Planning.</em>  
+            <em>IEEE Robotics and Automation Letters, vol. 2, pp. 428–435</em>  
+            <a href="https://doi.org/10.1109/LRA.2016.2635107">[publisher]</a>
+        </li>
+        <li>
+            Plaku E, <strong>Plaku E</strong>, and Simari P (2017):  
+            <em class="ptitle">Direct Path Superfacets: An Intermediate Representation for Motion Planning.</em>  
+            <em>IEEE Robotics and Automation Letters, vol. 2, pp. 350–357</em>  
+            <a href="https://doi.org/10.1109/LRA.2016.2619381">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2017):  
+            <em class="ptitle">Robot Motion Planning with Task Specifications via Regular Languages.</em>  
+            <em>Robotica, vol. 35, pp. 26–49</em>  
+            <a href="http://dx.doi.org/10.1017/S0263574715000417">[publisher]</a>
+        </li>
+        <li>
+            Edelkamp S, Can Secim B, and <strong>Plaku E</strong> (2017):  
+            <em class="ptitle">Surface Inspection via Hitting Sets and Multi-Goal Motion Planning.</em>  
+            <em>Springer LNCS Towards Autonomous Robotic Systems, vol. 10454, pp. 134–149</em>  
+            <a href="https://link.springer.com/chapter/10.1007/978-3-319-64107-2_12">[publisher]</a>
+        </li>
+        <li>
+            Qiao W, Maximova T, Fang X, <strong>Plaku E</strong>, and Shehu A (2017):  
+            <em class="ptitle">Reconstructing and Mining Protein Energy Landscapes to Understand Disease.</em>  
+            <em>Proceedings of the IEEE International Conference on Bioinformatics and Biomedicine, pp. 22–27</em>  
+            <a href="https://doi.org/10.1109/BIBM.2017.8217619">[publisher]</a>
+        </li>
+        <li>
+            Le D and <strong>Plaku E</strong> (2017):  
+            <em class="ptitle">Cooperative Multi-Robot Sampling-Based Motion Planning with Dynamics.</em>  
+            <em>Proceedings of the International Conference on Planning and Scheduling, pp. 513–521</em>  
+            <strong>(Best Robotics Paper)</strong>  
+            <a href="https://www.aaai.org/ocs/index.php/ICAPS/ICAPS17/paper/view/15584">[publisher]</a>
+        </li>
+        <li>
+            Morris D, Maximova T, <strong>Plaku E</strong>, and Shehu A (2017):  
+            <em class="ptitle">Out of One, Many: Exploiting Intrinsic Motions to Explore Protein Structure Spaces.</em>  
+            <em>Proceedings of the IEEE International Conference on Computational Advances in Bio and Medical Sciences, pp. 1–1</em>  
+            <a href="https://ieeexplore.ieee.org/document/8114290">[publisher]</a>
+        </li>
+        <li>
+            Qiao W, Maximova T, <strong>Plaku E</strong>, and Shehu A (2017):  
+            <em class="ptitle">Statistical Analysis of Computed Energy Landscapes to Understand Dysfunction in Pathogenic Protein Variants.</em>  
+            <em>Proceedings of the ACM International Conference on Bioinformatics, Computational Biology, and Health Informatics, pp. 679–684</em>  
+            <a href="https://doi.org/10.1145/3107411.3107499">[publisher]</a>
+        </li>
+        <li>
+            Kvelashvili T, Kilic O, Can Secim B, and <strong>Plaku E</strong> (2017):  
+            <em class="ptitle">UAV Swarm-Based Antenna System.</em>  
+            <em>Proceedings of the USNC-URSI National Radio Science, in press</em>  
+            <a href="#">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2016 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2016</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Shehu A and <strong>Plaku E</strong> (2016):  
+            <em class="ptitle">A Survey of Computational Treatments of Biomolecules by Robotics-Inspired Methods Modeling Equilibrium Structure and Dynamics.</em>  
+            <em>Journal of Artificial Intelligence Research, vol. 57, pp. 509–572</em>  
+            <a href="http://dx.doi.org/10.1613/jair.5040">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2016):  
+            <em class="ptitle">Autonomous Data Collection with Limited Time for Underwater Vehicles.</em>  
+            <em>IEEE Robotics and Automation Letters, vol. 2, pp. 112–119</em>  
+            <a href="http://dx.doi.org/10.1109/LRA.2016.2553175">[publisher]</a>
+        </li>
+        <li>
+            Maximova T, <strong>Plaku E</strong>, and Shehu A (2016):  
+            <em class="ptitle">Structure-guided Protein Transition Modeling with a Probabilistic Roadmap Algorithm.</em>  
+            <em>IEEE/ACM Transactions on Computational Biology and Bioinformatics, vol. 15, pp. 1783–1796</em>  
+            <a href="http://dx.doi.org/10.1109/TCBB.2016.2586044">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Rashidian S, and Edelkamp S (2016):  
+            <em class="ptitle">Multi-Group Motion Planning in Virtual Environments.</em>  
+            <em>Computer Animation and Virtual Worlds, in press</em>  
+            <a href="http://dx.doi.org/10.1002/cav.1688">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> and Le D (2016):  
+            <em class="ptitle">Interactive Search for Action and Motion Planning with Dynamics.</em>  
+            <em>Journal of Experimental and Theoretical Artificial Intelligence, vol. 28, pp. 849–869</em>  
+            <a href="http://dx.doi.org/10.1080/0952813X.2016.1146348">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2016):  
+            <em class="ptitle">Mission and Motion Planning for Autonomous Underwater Vehicles Operating in Spatially and Temporally Complex Environments.</em>  
+            <em>IEEE Journal of Oceanic Engineering, vol. 41, pp. 893–912</em>  
+            <a href="http://dx.doi.org/10.1109/JOE.2015.2503498">[publisher]</a>
+        </li>
+        <li>
+            Maximova T, Carr D, <strong>Plaku E</strong>, and Shehu A (2016):  
+            <em class="ptitle">Sample-based Models of Protein Structural Transitions.</em>  
+            <em>Proceedings of the ACM Conference on Bioinformatics and Computational Biology, pp. 128–137</em>  
+            <a href="https://doi.org/10.1145/2975167.2975180">[publisher]</a>
+        </li>
+        <li>
+            Maximova T, <strong>Plaku E</strong>, and Shehu A (2016):  
+            <em class="ptitle">The Sampling-based Algorithm for Modeling Protein Conformational Switching Method for Extended Sampling and Transition Paths Prediction with Probabilistic Roadmap Algorithm.</em>  
+            <em>Proceedings of the Structural Bioinformatics and Computational Biophysics, Intelligent Systems for Molecular Biology, pp. 66</em>  
+            <strong>(Outstanding Research Presentation)</strong>
+        </li>
+    </ol>
+</div>
+
+
+
+<!-- 2015 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2015</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong> and Karaman S (2015):  
+            <em class="ptitle">Motion Planning with Temporal-Logic Specifications: Progress and Challenges.</em>  
+            <em>AI Communications, vol. 29, pp. 151–162</em>  
+            <a href="http://content.iospress.com/articles/ai-communications/aic682">[publisher]</a>
+        </li>
+        <li>
+            McMahon J, Dzikowicz B, Houston B, and <strong>Plaku E</strong> (2015):  
+            <em class="ptitle">A Hybrid Planning Framework For Autonomous Underwater Vehicles.</em>  
+            <em>NRL Review, pp. 114–116</em>  
+            <a href="https://www.nrl.navy.mil/media/publications/nrl-review/">[publisher]</a>
+        </li>
+        <li>
+            Wallar A, <strong>Plaku E</strong>, and Sofge D (2015):  
+            <em class="ptitle">Reactive Motion Planning for Unmanned Aerial Surveillance of Risk-Sensitive Areas.</em>  
+            <em>IEEE Transactions on Automated Science and Engineering, vol. 12, pp. 969–980</em>  
+            <a href="http://dx.doi.org/10.1109/TASE.2015.2443033">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2015):  
+            <em class="ptitle">Region-Guided and Sampling-Based Tree Search for Motion Planning with Dynamics.</em>  
+            <em>IEEE Transactions on Robotics, vol. 31, pp. 723–735</em>  
+            <a href="http://dx.doi.org/10.1109/TRO.2015.2424031">[publisher]</a>
+        </li>
+        <li>
+            Wells A and <strong>Plaku E</strong> (2015):  
+            <em class="ptitle">Adaptive Sampling-Based Motion Planning for Mobile Robots with Differential Constraints.</em>  
+            <em>Springer LNCS Towards Autonomous Robotic Systems, vol. 9287, pp. 283–295</em>  
+            <strong>(Best Student Paper)</strong>  
+            <a href="http://link.springer.com/chapter/10.1007%2F978-3-319-22416-9_32">[publisher]</a>
+        </li>
+        <li>
+            Maximova T, <strong>Plaku E</strong>, and Shehu A (2015):  
+            <em class="ptitle">Computing Transition Paths in Multiple-Basin Proteins with a Probabilistic Roadmap Algorithm.</em>  
+            <em>Proceedings of the IEEE International Conference on Bioinformatics and Biomedicine, pp. 35–42</em>  
+            <a href="https://ieeexplore.ieee.org/document/7359652">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2015):  
+            <em class="ptitle">Autonomous Underwater Vehicle Mine Countermeasures via the Physical Traveling Salesman Problem.</em>  
+            <em>MTS/IEEE Oceans, pp. 1–5</em>  
+            <a href="https://ieeexplore.ieee.org/document/7404372">[publisher]</a>
+        </li>
+        <li>
+            Edelkamp S, <strong>Plaku E</strong>, Greulich C, and Pomarlan M (2015):  
+            <em class="ptitle">Solving the Inspection Problem via Colored Traveling Salesman Tours.</em>  
+            <em>Workshop on Task Planning for Intelligent Robots in Service and Manufacturing, IEEE International Conference on Robotics and Automation, pp. 26–31</em>  
+            <a href="http://www6.in.tum.de/pub/Main/WorkshopIros2015TaskPlanning/taskplan2015iros_paper_5.pdf">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2014 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2014</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong> and McMahon J (2014):  
+            <em class="ptitle">Motion Planning and Decision Making for Underwater Vehicles Operating in Constrained Environments in the Littoral.</em>  
+            <em>Springer LNCS Towards Autonomous Robotic Systems, vol. 8069, pp. 328–339</em>  
+            <a href="http://link.springer.com/chapter/10.1007%2F978-3-662-43645-5_36">[publisher]</a>  
+            <a href="papers/PaperTAROS14AUV.pdf">[preprint]</a>
+        </li>
+        <li>
+            Wallar A and <strong>Plaku E</strong> (2014):  
+            <em class="ptitle">Path Planning for Swarms by Combining Probabilistic Roadmaps and Potential Fields.</em>  
+            <em>Springer LNCS Towards Autonomous Robotic Systems, vol. 8069, pp. 417–428</em>  
+            <a href="http://link.springer.com/chapter/10.1007/978-3-662-43645-5_43">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2014):  
+            <em class="ptitle">Sampling-Based Tree Search with Discrete Abstractions for Motion Planning with Dynamics and Temporal Logic.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 3726–3733</em>  
+            <a href="http://dx.doi.org/10.1109/IROS.2014.6943085">[publisher]</a>
+        </li>
+        <li>
+            Le D and <strong>Plaku E</strong> (2014):  
+            <em class="ptitle">Guiding Sampling-Based Tree Search for Motion Planning with Dynamics via Probabilistic Roadmap Abstractions.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 212–217</em>  
+            <a href="http://dx.doi.org/10.1109/IROS.2014.6942563">[publisher]</a>
+        </li>
+        <li>
+            Rashidian S, <strong>Plaku E</strong>, and Edelkamp S (2014):  
+            <em class="ptitle">Motion Planning with Rigid-Body Dynamics for Generalized Traveling Salesman Tours.</em>  
+            <em>ACM SIGGRAPH Motion in Games, pp. 87–96</em>  
+            <a href="http://dl.acm.org/citation.cfm?class=2668090">[publisher]</a>
+        </li>
+        <li>
+            Edelkamp S and <strong>Plaku E</strong> (2014):  
+            <em class="ptitle">Multi-goal Motion Planning with Physics-based Game Engines.</em>  
+            <em>Proceedings of the IEEE Conference on Computational Intelligence and Games, pp. 115–122</em>  
+            <a href="http://dx.doi.org/10.1109/CIG.2014.6932874">[publisher]</a>
+        </li>
+        <li>
+            Wallar A and <strong>Plaku E</strong> (2014):  
+            <em class="ptitle">Path Planning for Swarms in Dynamic Environments by Combining Probabilistic Roadmaps and Potential Fields.</em>  
+            <em>Proceedings of the IEEE Symposium on Swarm Intelligence, pp. 290–297</em>  
+            <a href="http://dx.doi.org/10.1109/SIS.2014.7011808">[publisher]</a>
+        </li>
+        <li>
+            Wallar A, <strong>Plaku E</strong>, and Sofge D (2014):  
+            <em class="ptitle">A Planner for Autonomous Risk-Sensitive Coverage (PARCov) by a Team of Unmanned Aerial Vehicles.</em>  
+            <em>Proceedings of the IEEE Symposium on Swarm Intelligence, pp. 283–289</em>  
+            <a href="http://dx.doi.org/10.1109/SIS.2014.7011807">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2014):  
+            <em class="ptitle">Combined Task and Motion Planning for AUVs.</em>  
+            <em>Workshop on AI and Robotics, IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 17–18</em>  
+            <a href="http://people.csail.mit.edu/gdk/iros-airob14/papers/McMahonPlaku.pdf">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2013 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2013</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2013):  
+            <em class="ptitle">Falsification of LTL Safety Properties in Hybrid Systems with Nonlinear Dynamics.</em>  
+            <em>Springer International Journal on Software Tools for Technology Transfer, vol. 15, pp. 305–320</em>  
+            <a href="http://link.springer.com/article/10.1007%2Fs10009-012-0233-2">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2013):  
+            <em class="ptitle">Robot Motion Planning with Dynamics as Hybrid Search.</em>  
+            <em>Proceedings of the AAAI Conference on Artificial Intelligence, pp. 1415–1421</em>  
+            <a href="http://www.aaai.org/ocs/index.php/AAAI/AAAI13/paper/viewFile/6254/6844">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2013):  
+            <em class="ptitle">Combined Mission and Motion Planning to Enhance Autonomy of Underwater Vehicles Operating in the Littoral Zone.</em>  
+            <em>Workshop on Combining Task and Motion Planning, IEEE International Conference on Robotics and Automation, pp. 17–22</em>  
+            <a href="icra2013tamp_proc/paperPlaku.pdf">[publisher]</a>
+        </li>
+        <li>
+            McMahon J and <strong>Plaku E</strong> (2013):  
+            <em class="ptitle">Motion Planning with Linear Temporal Logic for Underwater Vehicles Operating in Constrained Environments.</em>  
+            <em>Workshop on Planning in Continuous Domains, International Conference on Automated Planning and Scheduling, p. 3</em>  
+            <a href="http://icaps13.icaps-conference.org/wp-content/uploads/2013/05/PCD13proceedings.pdf">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2013):  
+            <em class="ptitle">From Navigation to Robotic-Assisted Surgery: Combined Planning in Discrete and Continuous Spaces.</em>  
+            <em>Workshop on Combining Robot Motion Planning and AI Planning for Practical Applications, Robotics: Science and Systems, pp. 5–6</em>  
+            <a href="rss2013ws/paperPlaku.pdf">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2012 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2012</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong> (2012):  
+            <em class="ptitle">Planning in Discrete and Continuous Spaces: From LTL Tasks to Robot Motions.</em>  
+            <em>Springer LNCS Towards Autonomous Robotic Systems, vol. 7429, pp. 331–342</em>  
+            <a href="http://www.springerlink.com/content/r588237578141nm4/">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2012):  
+            <em class="ptitle">Guiding Sampling-based Motion Planning by Forward and Backward Discrete Search.</em>  
+            <em>Springer LNCS Intelligent Robots and Applications, vol. 7508, pp. 289–300</em>  
+            <a href="http://link.springer.com/chapter/10.1007%2F978-3-642-33503-7_29">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2012):  
+            <em class="ptitle">Motion Planning with Discrete Abstractions and Physics-Based Game Engines.</em>  
+            <em>Springer LNCS Motion in Games, pp. 290–301</em>  
+            <a href="http://link.springer.com/chapter/10.1007%2F978-3-642-34710-8_27">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2012):  
+            <em class="ptitle">Path Planning with Probabilistic Roadmaps and Linear Temporal Logic.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 2269–2275</em>  
+            <a href="http://dx.doi.org/10.1109/10.1109/IROS.2012.6385726">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2012):  
+            <em class="ptitle">Motion Planning with Differential Constraints as Guided Search over Continuous and Discrete Spaces.</em>  
+            <em>International Symposium on Combinatorial Search, pp. 171–172</em>  
+            <a href="http://www.aaai.org/ocs/index.php/SOCS/SOCS12/paper/viewFile/5401/5196">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2012):  
+            <em class="ptitle">Planning Robot Motions to Satisfy Linear Temporal Logic, Geometric, and Differential Constraints.</em>  
+            <em>Workshop on Combining Task and Motion Planning for Real-World Applications, International Conference on Automated Planning and Scheduling, pp. 21–28</em>  
+            <a href="http://icaps12.icaps-conference.org/workshops/tampra2012-proceedings.pdf">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+
+<!-- 2011 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2011</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Pezzementi Z, <strong>Plaku E</strong>, Reyda C, and Hager GD (2011):  
+            <em class="ptitle">Tactile Object Recognition From Appearance Information.</em>  
+            <em>IEEE Transactions on Robotics, vol. 27(3), pp. 473–487</em>  
+            <a href="http://dx.doi.org/10.1109/TRO.2011.2125350">[publisher]</a>
+        </li>
+        <li>
+            Liu WP, Lucas BC, Guerin K, and <strong>Plaku E</strong> (2011):  
+            <em class="ptitle">Sensor and Sampling-based Motion Planning for Minimally Invasive Robotic Exploration of Osteolytic Lesions.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 1346–1352</em>  
+            <a href="http://dx.doi.org/10.1109/IROS.2011.6094599">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2011):  
+            <em class="ptitle">Sampling-based Motion Planning with High-Level Discrete Specifications.</em>  
+            <em>Workshop on Progress and Open Problems in Motion Planning, IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 29–30</em>  
+            <a href="http://www.cse.unr.edu/robotics/tc-apc/sites/cse.unr.edu.robotics.tc-apc/files/Plaku_iros11workshop.pdf">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2010 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2010</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2010):  
+            <em class="ptitle">Motion Planning with Dynamics by a Synergistic Combination of Layers of Planning.</em>  
+            <em>IEEE Transactions on Robotics, vol. 26(3), pp. 469–482</em>  
+            <a href="http://dx.doi.org/10.1109/TRO.2010.2047820">[publisher]</a>
+        </li>
+        <li>
+            Reiley C, <strong>Plaku E</strong>, and Hager GD (2010):  
+            <em class="ptitle">Motion Generation of Robotic Surgical Tasks: Learning from Expert Demonstrations.</em>  
+            <em>Proceedings of the International Conference of the IEEE Engineering in Medicine and Biology Society, pp. 967–970</em>  
+            <a href="http://dx.doi.org/10.1109/IEMBS.2010.5627594">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> and Hager GD (2010):  
+            <em class="ptitle">Sampling-based Motion and Symbolic Action Planning with Geometric and Differential Constraints.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 5002–5008</em>  
+            <a href="http://dx.doi.org/10.1109/ROBOT.2010.5509563">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+
+<!-- 2009 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2009</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2009):  
+            <em class="ptitle">Hybrid Systems: From Verification to Falsification by Combining Motion Planning and Discrete Search.</em>  
+            <em>Formal Methods in System Design, vol. 34(2), pp. 157–182</em>  
+            <a href="http://www.springerlink.com/content/t8976164108139x0/">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2009):  
+            <em class="ptitle">Falsification of LTL Safety Properties in Hybrid Systems.</em>  
+            <em>Springer LNCS Tools and Algorithms for the Construction and Analysis of Systems, vol. 5505, pp. 368–382</em>  
+            <a href="http://www.springerlink.com/content/2p308llj64333505/">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2008 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2008</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong> and Kavraki LE (2008):  
+            <em class="ptitle">Quantitative Analysis of Nearest-Neighbors Search in High-Dimensional Sampling-Based Motion Planning.</em>  
+            <em>Springer Tracts in Advanced Robotics, vol. 47, pp. 3–18</em>  
+            <a href="http://dx.doi.org/10.1007/978-3-540-68405-3_1">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2008):  
+            <em class="ptitle">Impact of Workspace Decompositions on Discrete Search Leading Continuous Exploration (DSLX) Motion Planning.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 3751–3756</em>  
+            <a href="http://dx.doi.org/10.1109/ROBOT.2008.4543786">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2007 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2007</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong>, Stamati H, Clementi C, and Kavraki LE (2007):  
+            <em class="ptitle">Fast and Reliable Analysis of Molecular Motion Using Proximity Relations and Dimensionality Reduction.</em>  
+            <em>Proteins: Structure, Function, and Bioinformatics, vol. 67(4), pp. 897–907</em>  
+            <a href="http://www3.interscience.wiley.com/cgi-bin/abstract/114195666/ABSTRACT">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> and Kavraki LE (2007):  
+            <em class="ptitle">Distributed Computation of the <tt>k</tt>nn Graph for Large High-Dimensional Point Sets.</em>  
+            <em>Journal of Parallel and Distributed Computing, vol. 67(3), pp. 346–359</em>  
+            <a href="http://dx.doi.org/10.1016/j.jpdc.2006.10.004">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2007):  
+            <em class="ptitle">Hybrid Systems: From Verification to Falsification.</em>  
+            <em>Springer LNCS Computer Aided Verification, vol. 4590, pp. 468–481</em>  
+            <a href="http://dx.doi.org/10.1007/978-3-540-73368-3_48">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2007):  
+            <em class="ptitle">Discrete Search Leading Continuous Exploration for Kinodynamic Motion Planning.</em>  
+            <em>Robotics: Science and Systems, pp. 326–333</em>  
+            <a href="http://www.roboticsproceedings.org/rss03/p40.html">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> and Kavraki LE (2007):  
+            <em class="ptitle">Nonlinear Dimensionality Reduction Using Approximate Nearest Neighbors.</em>  
+            <em>Proceedings of the SIAM International Conference on Data Mining, pp. 180–191</em>  
+            <a href="http://www.siam.org/meetings/proceedings/2007/datamining/">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Kavraki LE, and Vardi MY (2007):  
+            <em class="ptitle">A Motion Planner for a Hybrid Robotic System with Kinodynamic Constraints.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 692–697</em>  
+            <a href="http://dx.doi.org/10.1109/ROBOT.2007.363067">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong>, Bekris KE, and Kavraki LE (2007):  
+            <em class="ptitle">OOPS for Motion Planning: An Online Open-source Programming System.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 3711–3716</em>  
+            <a href="http://dx.doi.org/10.1109/ROBOT.2007.364047">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+
+<!-- 2005 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2005</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong>, Bekris KE, Chen BY, Ladd AM, and Kavraki LE (2005):  
+            <em class="ptitle">Sampling-Based Roadmap of Trees for Parallel Motion Planning.</em>  
+            <em>IEEE Transactions on Robotics, vol. 21(4), pp. 587–608</em>  
+            <a href="http://dx.doi.org/10.1109/TRO.2005.847599">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> and Kavraki LE (2005):  
+            <em class="ptitle">Distributed Sampling-Based Roadmap of Trees for Large-Scale Motion Planning.</em>  
+            <em>Proceedings of the IEEE International Conference on Robotics and Automation, pp. 3879–3884</em>  
+            <a href="http://dx.doi.org/10.1109/ROBOT.2005.1570711">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+
+<!-- 2003 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2003</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Akinc M, Bekris KE, Chen BY, Ladd AM, <strong>Plaku E</strong>, and Kavraki LE (2003):  
+            <em class="ptitle">Probabilistic Roadmaps of Trees for Parallel Computation of Multiple Query Roadmaps.</em>  
+            <em>Springer Tracts in Advanced Robotics, vol. 15, pp. 80–89</em>  
+            <a href="http://dx.doi.org/10.1007/11008941_9">[publisher]</a>  
+            <a href="papers/PaperISRR03.pdf">[preprint]</a>
+        </li>
+        <li>
+            Bekris KE, Chen BY, Ladd AM, <strong>Plaku E</strong>, and Kavraki LE (2003):  
+            <em class="ptitle">Multiple Query Motion Planning using Single Query Primitives.</em>  
+            <em>Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 656–661</em>  
+            <a href="http://dx.doi.org/10.1109/IROS.2003.1250704">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 2001 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2001</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            <strong>Plaku E</strong> and Shparlinski IE (2001):  
+            <em class="ptitle">On Polynomial Representations of Boolean Functions Related to some Number Theoretic Problems.</em>  
+            <em>Proceedings of the International Conference on Foundations of Software Technology and Theoretical Computer Science, vol. 2245, pp. 305–316</em>  
+            <a href="http://www.springerlink.com/content/0gbxqkq5eu5xvy76/?p=d6bcf97446c84aa8b9415d6d13e90699&amp;pi=0">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- 1999 Publications -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">1999</h3>
+<div class="pub-card">
+    <ol class="publications-list">
+        <li>
+            Arnavut Z and <strong>Plaku E</strong> (1999):  
+            <em class="ptitle">Lossless Compression of ECG Signals.</em>  
+            <em>Proceedings of the IEEE International Conference of the Engineering in Medicine and Biology Society, pp. 274</em>  
+            <a href="http://dx.doi.org/10.1109/IEMBS.1999.802344">[publisher]</a>
+        </li>
+    </ol>
+</div>
+
+<!-- Theses -->
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">Theses</h3>
+<div class="pub-card">
+    <ul class="publications-list">
+        <li>
+            <strong>Plaku E</strong> (2008):  
+            <em class="ptitle">From High-Level Tasks to Low-Level Motions: Motion Planning for High-Dimensional Nonlinear Hybrid Robotic Systems.</em>  
+            <em>Ph.D. Thesis, Rice University, Houston, TX</em>  
+            <a href="http://books.google.com/books?class=qZZ3TTlS97IC&pg=PR2&lpg=PR2&dq=From+High-Level+Tasks+to+Low-Level+Motions&source=bl&ots=8co2R6Tqog&sig=GDmFqgpBj-WwuzjUGwnv6_uEUzc&hl=en&sa=X&ei=YPurT6PHH6ne6QHJq6GaAg&ved=0CG8Q6AEwAw">[publisher]</a>
+        </li>
+        <li>
+            <strong>Plaku E</strong> (2002):  
+            <em class="ptitle">Multiplicity Automata, Polynomials and the Complexity of Small-Depth Boolean Circuits.</em>  
+            <em>M.S. Thesis, Clarkson University, Potsdam, NY</em>  
+            <a href="http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CFUQFjAB&url=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fabout%2FMultiplicity_automata_polynomials_and_th.html%3Fid%3DAB25NwAACAAJ&ei=7PurT-OTMcu26QHwhamvBA&usg=AFQjCNGWL4R6nPtZGYSBJmSdaZ0t2PE1Nw">[publisher]</a>
+        </li>
+    </ul>
+</div>
+
+</section>
+
+
+<section id="disclaimer">
+<h2 class="section-title">Disclaimer</h2>
+
+<p style="margin-bottom:20px">
+    Any postings on this site are my own and do not necessarily represent NSF's positions, strategies, or opinions.
+    </p>
+</section>
+
+
+</div>
+
+    <script>
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+/*
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+*/
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Stop observing after fade-in
+        }
+    });
+}, { 
+    threshold: 0.01,       // Only 1% of the section needs to be visible
+    rootMargin: "0px 0px -200px 0px" // Trigger slightly before the section fully enters viewport
+});
+
+document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+});
+
+// Ensure publications section is immediately visible
+//document.getElementById('publications').classList.add('visible');
+ 
+        // Update active nav button on scroll
+ /*       window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navButtons = document.querySelectorAll('nav button');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navButtons.forEach((button, index) => {
+                button.classList.remove('active');
+                if (button.textContent.toLowerCase() === current) {
+                    button.classList.add('active');
+                }
+            });
+        });*/
+        window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('.section');
+    const navButtons = document.querySelectorAll('nav button');
+
+    let currentSectionId = '';
+
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        // Section is considered "current" if its top is less than 50% of viewport height
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+
+    navButtons.forEach(button => {
+        button.classList.remove('active');
+        if (button.textContent.toLowerCase() === currentSectionId) {
+            button.classList.add('active');
+        }
+    });
+});
+
+    </script>
+<script>
+const toggle = document.querySelector('.nav-toggle');
+const buttons = document.querySelector('.nav-buttons');
+
+toggle.addEventListener('click', () => {
+    buttons.classList.toggle('show');
+});
+
+// Close menu after clicking a nav button (mobile only)
+const navItems = buttons.querySelectorAll('button, a.cv-button');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (buttons.classList.contains('show')) {
+            buttons.classList.remove('show');
+        }
+    });
+});
+</script>
+</body>
+</html>
