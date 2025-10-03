@@ -710,6 +710,33 @@ nav a.cv-button:hover {
         padding: 12px 0;
         font-size: 0.9em;
     }
+    
+    /* Reduce padding for all card types */
+    .card, .pub-card, .stat-card {
+        padding: 20px;         /* smaller padding for mobile */
+        margin-bottom: 20px;   /* slightly tighter spacing */
+    }
+
+    /* Reduce font size slightly to fit content better */
+    .card p, .pub-card li, .stat-card {
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    .pub-card .pub-title {
+        font-size: 1.2em;      /* reduce title size slightly */
+    }
+
+    .stat-card .stat-number {
+        font-size: 2.5em;      /* scale down numbers for small screens */
+    }
+
+    /* Reduce badges inside cards */
+    .badge {
+        padding: 6px 14px;
+        font-size: 0.8em;
+    }
+
 }
 
 
