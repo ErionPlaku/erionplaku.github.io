@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio</title>
+    <title>Erion Plaku</title>
     <style>
         * {
             margin: 0;
@@ -45,7 +45,7 @@
             position: fixed;
             border-radius: 50%;
             filter: blur(40px);
-            opacity: 0.6;
+            opacity: 0.4;
             animation: float 20s infinite ease-in-out;
             z-index: -1;
         }
@@ -57,6 +57,7 @@
             top: 10%;
             left: 10%;
             animation-delay: 0s;
+            animation: float 18s infinite ease-in-out; 
         }
 
         .orb2 {
@@ -66,6 +67,7 @@
             top: 60%;
             right: 10%;
             animation-delay: 7s;
+            animation: float 22s infinite ease-in-out; 
         }
 
         .orb3 {
@@ -75,6 +77,7 @@
             bottom: 10%;
             left: 50%;
             animation-delay: 14s;
+            animation: float 20s infinite ease-in-out; 
         }
 
         @keyframes float {
@@ -108,7 +111,8 @@
         .hero-title {
             font-size: 8vw;
             font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, #00dfd8 50%, #7928ca 100%);
+            /*background: linear-gradient(135deg, #fff 0%, #00dfd8 50%, #7928ca 100%);*/
+            background: linear-gradient(135deg, #e0f7ff 0%, #4da6ff 50%, #0070f3 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -212,12 +216,18 @@
         }
 
         .scroll-indicator {
+          position: relative; /* relative to hero content */
+    display: block;
+    margin: 40px auto 0; /* space below tagline */
+    animation: bounce 2s infinite;
+    opacity: 0.5;
+    /*
             position: absolute;
             bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
-            opacity: 0.5;
+            opacity: 0.5;*/
         }
 
         @keyframes bounce {
@@ -245,7 +255,7 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
+            color: #aaaaFF;
             padding: 15px 30px;
             border-radius: 50px;
             cursor: pointer;
@@ -287,7 +297,7 @@
             font-size: 5em;
             font-weight: 900;
             margin-bottom: 60px;
-            background: linear-gradient(135deg, #ffffff, #00dfd8);
+            background: linear-gradient(135deg, #a0cfff, #4a90ff, #001f7f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -328,10 +338,16 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
+	h3
+	{
+	   color: #4a90ff;
+         
+	}
+	
         .card h3 {
             font-size: 1.8em;
             margin-bottom: 15px;
-            color: #00dfd8;
+            color: #4a90ff;
             font-weight: 700;
         }
 
@@ -462,7 +478,7 @@ body {
 /* Each list item uses the counter for reverse numbering */
 .publications-list li {
   counter-increment: paper-counter -1; /* decrement for reverse numbering */
-  color: #F0F0F0;                      /* light gray for authors/general text */
+  color: #ccccff;                        /* light gray for authors/general text */
   line-height: 1.6;
   margin-bottom: 1.25rem;
   font-size: 1rem;
@@ -476,13 +492,13 @@ body {
   position: absolute;
   left: 0;
   font-weight: 700;
-  color: #ff6f61;                       /* warm coral accent for numbers */
+  color: #886fff;                       /* warm coral accent for numbers */
   font-size: 1.3em;
 }
 
 /* Year headings */
 .year-heading {
-  color: #00dfd8;                        /* bright cyan for year headings */
+  color: #eedfd8;                        /* bright cyan for year headings */
   font-weight: 700;
   font-size: 1.6rem;
   margin-bottom: 1rem;
@@ -491,7 +507,7 @@ body {
 /* Paper titles */
 .publications-list li em.ptitle {
   font-style: italic;
-  color: #ffd166;                        /* golden yellow for titles */
+  color: #4fc3f7;                        /* golden yellow for titles */
   font-size: 1.05rem; 
 }
 
@@ -507,12 +523,12 @@ body {
   margin-left: 0.25rem;
   font-size: 0.9rem;
   text-decoration: none;
-  color: #4fc3f7;                        /* soft cyan for links */
+  color: #8888ff;                        /* soft cyan for links */
 }
 
 .publications-list li a:hover {
-  color: #ffd166;                         /* highlight color on hover */
-  text-decoration: underline;
+  color: #bbbbff;                         /* highlight color on hover */
+  text-decoration: none;
 }
 
 /****************************************/
@@ -587,25 +603,26 @@ body {
             }
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(0, 223, 216, 0.2);
-            color: #00dfd8;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            border: 1px solid rgba(0, 223, 216, 0.3);
-        }
+.badge {
+    display: inline-block;
+    background: rgba(74, 144, 255, 0.2); /* soft translucent blue */
+    color: #4a90ff;                      /* vibrant blue text */
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(74, 144, 255, 0.3); /* soft border in same blue */
+}
+
         
         nav a.cv-button {
     display: inline-block;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
+    color: #aaaaff;
     padding: 15px 30px;
     border-radius: 50px;
     cursor: pointer;
@@ -878,73 +895,73 @@ nav a.cv-button:hover {
     </div>
 
     <div class="card" style="margin-top: 40px;">
-        <h3>Industry Applications & Cross-Domain Impact</h3>
+        <h3 style="color:#88AAAA">Industry Applications & Cross-Domain Impact</h3>
+ </div>
 
         <div class="grid" style="margin-top: 40px;">
             <div class="card">
-                <h3>Defense</h3>
+                <h3 style="color:#88AAAA">Defense</h3>
                 <p>Delivered AI-powered autonomy across air, land, sea, and undersea platforms, enhancing mission success, resilience, and operational efficiency</p>
             </div>
             <div class="card">
-                <h3>Healthcare & Medical Systems</h3>
+                <h3 style="color:#88AAAA">Healthcare & Medical Systems</h3>
                 <p>Applied AI in robotic-assisted surgery to improve precision, training efficacy, and patient safety in high-stakes clinical environments</p>
             </div>
             <div class="card">
-                <h3>Manufacturing & Logistics</h3>
+                <h3 style="color:#88AAAA">Manufacturing & Logistics</h3>
                 <p>Enabled intelligent mobility and coordination in warehouse automation, driving cost reduction, scalability, and supply chain optimization</p>
             </div>
         </div>
-    </div>
-
+   
     <div class="card">
-        <h3>Robotics & Autonomous Systems</h3>
+        <h3 style="color:#AAAAFF">Robotics & Autonomous Systems</h3>
+ </div>
 
         <div class="grid" style="margin-top: 40px;">
             <div class="card">
-                <h3>Motion Planning</h3>
+                <h3 style="color:#AAAAFF">Motion Planning</h3>
                 <p>Innovations in AI-integrated motion planning deployed across robotic domains to enable fast, efficient, and adaptive autonomy</p>
             </div>
             <div class="card">
-                <h3>Task-Oriented Autonomy</h3>
+                <h3 style="color:#AAAAFF">Task-Oriented Autonomy</h3>
                 <p>Advanced task and motion planning methods that empower robots to autonomously execute high-level missions with minimal supervision</p>
             </div>
             <div class="card">
-                <h3>Multi-Robot Systems</h3>
+                <h3 style="color:#AAAAFF">Multi-Robot Systems</h3>
                 <p>Scalable multi-robot motion planning and coordination strategies to enhance exploration, data collection, and infrastructure inspection</p>
             </div>
             <div class="card">
-                <h3>Natural Language Integration</h3>
+                <h3 style="color:#AAAAFF">Natural Language Integration</h3>
                 <p>Leveraged large language models to enable robots to understand and act on human intent expressed in natural language</p>
             </div>
         </div>
-    </div>
-
+   
     <div class="card">
-        <h3>AI & Machine Learning</h3>
+        <h3 style="color:#FFAAEE">AI & Machine Learning</h3>
+    </div>
 
         <div class="grid" style="margin-top: 40px;">
             <div class="card">
-                <h3>AI-Driven Decision-Making</h3>
+                <h3 style="color:#FFAAEE">AI-Driven Decision-Making</h3>
                 <p>Designed scalable decision systems combining search, planning, and reasoning to optimize complex, high-impact operations</p>
             </div>
             <div class="card">
-                <h3>Generative AI & LLMs</h3>
+                <h3 style="color:#FFAAEE">Generative AI & LLMs</h3>
                 <p>Integrated large language models to enhance knowledge access, automate reasoning, and strengthen human-AI collaboration</p>
             </div>
             <div class="card">
-                <h3>Deep Learning & Reinforcement Learning</h3>
+                <h3 style="color:#FFAAEE">Deep Learning & Reinforcement Learning</h3>
                 <p>Applied deep and reinforcement learning to enable real-time adaptation and performance optimization in dynamic environments</p>
             </div>
             <div class="card">
-                <h3>Uncertainty & Probabilistic Modeling</h3>
+                <h3 style="color:#FFAAEE">Uncertainty & Probabilistic Modeling</h3>
                 <p>Advanced AI robustness through probabilistic reasoning and Bayesian inference for reliable decision-making under uncertainty</p>
             </div>
             <div class="card">
-                <h3>AI Scalability</h3>
+                <h3 style="color:#FFAAEE">AI Scalability</h3>
                 <p>Scaled complex AI solutions using distributed computing frameworks to support large-scale planning, search, and learning</p>
             </div>
         </div>
-    </div>
 </section>
 
 
@@ -970,7 +987,7 @@ nav a.cv-button:hover {
     </div>
 </div>
 
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2025</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2025</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -987,7 +1004,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2024 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2024</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2024</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1024,7 +1041,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2023 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2023</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2023</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1061,7 +1078,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2022 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2022</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2022</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1080,7 +1097,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2021 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2021</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2021</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1119,7 +1136,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2020 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2020</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2020</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1132,7 +1149,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2019 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2019</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2019</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1157,7 +1174,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2018 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2018</h3>
+<h3 style="font-size: 2em; margin: 40px 0 20px 0;">2018</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1200,7 +1217,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2017 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2017</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2017</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1268,7 +1285,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2016 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2016</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2016</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1325,7 +1342,7 @@ nav a.cv-button:hover {
 
 
 <!-- 2015 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2015</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2015</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1381,7 +1398,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2014 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2014</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2014</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1443,7 +1460,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2013 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2013</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2013</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1480,7 +1497,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2012 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2012</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2012</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1524,7 +1541,7 @@ nav a.cv-button:hover {
 
 
 <!-- 2011 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2011</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2011</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1549,7 +1566,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2010 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2010</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2010</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1575,7 +1592,7 @@ nav a.cv-button:hover {
 
 
 <!-- 2009 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2009</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2009</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1594,7 +1611,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2008 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2008</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2008</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1613,7 +1630,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2007 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2007</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2007</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1663,7 +1680,7 @@ nav a.cv-button:hover {
 
 
 <!-- 2005 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2005</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2005</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1683,7 +1700,7 @@ nav a.cv-button:hover {
 
 
 <!-- 2003 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2003</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2003</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1703,7 +1720,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 2001 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">2001</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">2001</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1716,7 +1733,7 @@ nav a.cv-button:hover {
 </div>
 
 <!-- 1999 Publications -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">1999</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">1999</h3>
 <div class="pub-card">
     <ol class="publications-list">
         <li>
@@ -1729,19 +1746,19 @@ nav a.cv-button:hover {
 </div>
 
 <!-- Theses -->
-<h3 style="color: #00dfd8; font-size: 2em; margin: 40px 0 20px 0;">Theses</h3>
+<h3 style=" font-size: 2em; margin: 40px 0 20px 0;">Theses</h3>
 <div class="pub-card">
     <ul class="publications-list">
         <li>
             <strong>Plaku E</strong> (2008):  
-            <em class="ptitle">From High-Level Tasks to Low-Level Motions: Motion Planning for High-Dimensional Nonlinear Hybrid Robotic Systems</em>  
-            <em>Ph.D. Thesis</em>, Rice University, Houston, TX  
+            <em class="ptitle">From High-Level Tasks to Low-Level Motions: Motion Planning for High-Dimensional Nonlinear Hybrid Robotic Systems.</em>  
+            <em>Ph.D. Thesis, Rice University, Houston, TX</em>  
             <a href="http://books.google.com/books?class=qZZ3TTlS97IC&pg=PR2&lpg=PR2&dq=From+High-Level+Tasks+to+Low-Level+Motions&source=bl&ots=8co2R6Tqog&sig=GDmFqgpBj-WwuzjUGwnv6_uEUzc&hl=en&sa=X&ei=YPurT6PHH6ne6QHJq6GaAg&ved=0CG8Q6AEwAw">[publisher]</a>
         </li>
         <li>
             <strong>Plaku E</strong> (2002):  
-            <em class="ptitle">Multiplicity Automata, Polynomials and the Complexity of Small-Depth Boolean Circuits</em>  
-            <em>M.S. Thesis</em>, Clarkson University, Potsdam, NY  
+            <em class="ptitle">Multiplicity Automata, Polynomials and the Complexity of Small-Depth Boolean Circuits.</em>  
+            <em>M.S. Thesis, Clarkson University, Potsdam, NY</em>  
             <a href="http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CFUQFjAB&url=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fabout%2FMultiplicity_automata_polynomials_and_th.html%3Fid%3DAB25NwAACAAJ&ei=7PurT-OTMcu26QHwhamvBA&usg=AFQjCNGWL4R6nPtZGYSBJmSdaZ0t2PE1Nw">[publisher]</a>
         </li>
     </ul>
