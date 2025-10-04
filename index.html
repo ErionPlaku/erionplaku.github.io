@@ -582,6 +582,42 @@ body {
 
         /* Responsive */
         @media (max-width: 768px) {
+          .orb1, .orb2, .orb3 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .orb1 {
+        top: 5%;  /* Adjust positioning */
+        left: 5%;
+    }
+
+    .orb2 {
+        top: 50%; /* Reposition vertically */
+        right: 5%;
+    }
+
+    .orb3 {
+        bottom: 5%;
+        left: 50%;
+    }
+
+    /* Adjust animation speed on mobile */
+    .orb1 {
+        animation-duration: 15s;
+    }
+    .orb2 {
+        animation-duration: 18s;
+    }
+    .orb3 {
+        animation-duration: 16s;
+    }
+
+    /* Ensure the orbs don’t get too large on small screens */
+    .orb1, .orb2, .orb3 {
+        filter: blur(30px);  /* Less blur for mobile */
+    }
+    
             .hero-title {
                 font-size: 15vw;
             }
