@@ -1760,24 +1760,21 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { 
-    threshold: 0.01,       // Only 1% of the section needs to be visible
-    rootMargin: "0px 0px -200px 0px" // Trigger slightly before the section fully enters viewport
+    threshold: 0.01,
+    rootMargin: "0px 0px -200px 0px"
 });
 
 document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// Force publications section visible on mobile and handle resize
+// Force publications section visible on mobile only if not already visible
 function forceMobilePublicationsVisible() {
     const pubSection = document.getElementById('publications');
     if (!pubSection) return;
 
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 768 && !pubSection.classList.contains('visible')) {
         pubSection.classList.add('visible');
-    } else {
-        // Optional: remove `.visible` for desktop to rely on Intersection Observer
-        pubSection.classList.remove('visible');
     }
 }
 
@@ -1796,7 +1793,6 @@ window.addEventListener('scroll', () => {
 
     sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        // Section is considered "current" if its top is less than 50% of viewport height
         if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
             currentSectionId = section.getAttribute('id');
         }
@@ -1819,7 +1815,6 @@ toggle.addEventListener('click', () => {
     buttons.classList.toggle('show');
 });
 
-// Close menu after clicking a nav button (mobile only)
 const navItems = buttons.querySelectorAll('button, a.cv-button');
 navItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -1829,6 +1824,7 @@ navItems.forEach(item => {
     });
 });
 </script>
+
 
 </body>
 </html>
