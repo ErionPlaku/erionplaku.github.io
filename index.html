@@ -621,7 +621,17 @@ nav button.active {
         margin-top: 10px;
     }
 
-    .nav-buttons.show { display: flex; }
+    .nav-buttons.show { display: flex; max-height: 80vh;      /* allow menu to take up most of screen height */
+        overflow-y: auto;      /* enable scrolling if items exceed height */}
+        
+     .nav-buttons.show::-webkit-scrollbar {
+    width: 6px;
+}
+
+.nav-buttons.show::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
 
     .section { overflow: visible; }
     .section-title { font-size: 2.5em; }
