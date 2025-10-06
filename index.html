@@ -1918,6 +1918,22 @@ navItems.forEach(item => {
     });
 });
 
+// Ensure menu scroll accommodates last item on mobile rotation
+function fixNavScroll() {
+    const buttons = document.querySelector('.nav-buttons');
+    if (!buttons) return;
+    // Temporarily remove max-height to let browser recalc scroll
+    buttons.style.maxHeight = 'none';
+    const scrollHeight = buttons.scrollHeight;
+    buttons.style.maxHeight = ''; // revert back
+    // If scrollHeight > clientHeight, scroll works naturally
+}
+
+// Call on rotation and on menu open
+window.addEventListener('orientationchange', fixNavScroll);
+document.querySelector('.nav-toggle').addEventListener('click', fixNavScroll);
+
+
 </script>
 
 
