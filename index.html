@@ -1877,22 +1877,6 @@ window.addEventListener('scroll', () => {
 const toggle = document.querySelector('.nav-toggle');
 const buttons = document.querySelector('.nav-buttons');
 
-toggle.addEventListener('click', () => {
-    buttons.classList.toggle('show');
-});
-
-const navItems = buttons.querySelectorAll('button, a.cv-button');
-navItems.forEach(item => {
-    item.addEventListener('click', () => {
-        if (buttons.classList.contains('show')) {
-            buttons.classList.remove('show');
-        }
-    });
-});
-*/
-const toggle = document.querySelector('.nav-toggle');
-const buttons = document.querySelector('.nav-buttons');
-
 // Toggle menu and lock page scroll
 toggle.addEventListener('click', () => {
     buttons.classList.toggle('show');
@@ -1917,21 +1901,41 @@ navItems.forEach(item => {
         }
     });
 });
+*/
 
-// Ensure menu scroll accommodates last item on mobile rotation
+const toggle = document.querySelector('.nav-toggle');
+const buttons = document.querySelector('.nav-buttons');
+
+toggle.addEventListener('click', () => {
+    buttons.classList.toggle('show');
+
+    // Optional: scroll to bottom immediately on menu open
+    buttons.scrollTop = buttons.scrollHeight;
+});
+
+// Close menu after clicking a nav button (mobile only)
+const navItems = buttons.querySelectorAll('button, a.cv-button');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (buttons.classList.contains('show')) {
+            buttons.classList.remove('show');
+        }
+    });
+});
+
+// Handle mobile rotation: force browser to recalc scrollable area
 function fixNavScroll() {
-    const buttons = document.querySelector('.nav-buttons');
     if (!buttons) return;
     // Temporarily remove max-height to let browser recalc scroll
     buttons.style.maxHeight = 'none';
     const scrollHeight = buttons.scrollHeight;
     buttons.style.maxHeight = ''; // revert back
-    // If scrollHeight > clientHeight, scroll works naturally
+    // The container will now scroll naturally if needed
 }
 
-// Call on rotation and on menu open
+// Call on rotation and menu open
 window.addEventListener('orientationchange', fixNavScroll);
-document.querySelector('.nav-toggle').addEventListener('click', fixNavScroll);
+toggle.addEventListener('click', fixNavScroll);
 
 
 </script>
