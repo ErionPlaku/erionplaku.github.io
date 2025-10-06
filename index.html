@@ -637,6 +637,20 @@ nav button.active {
     .pub-card .pub-title { font-size: 1.2em; }
     .stat-card .stat-number { font-size: 2.5em; }
     .badge { padding: 6px 14px; font-size: 0.8em; }
+    
+    /* Nested card grids: single column on mobile */
+  .card > .grid {
+    flex-direction: column; /* stack vertically */
+    gap: 20px;              /* slightly smaller gap for mobile */
+  }
+
+  .card > .grid > .card,
+  .card > .grid > .stat-card {
+    flex: 1 1 100%;         /* take full width */
+    min-width: 0;           /* remove min-width to allow shrinking */
+  }
+
+  
 }
 </style>
 
