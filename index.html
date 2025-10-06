@@ -1740,31 +1740,17 @@ nav button.active {
 
 </div>
 
-    <script>
-        function scrollToSection(id) {
-            const section = document.getElementById(id);
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            
-            document.querySelectorAll('nav button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
+<script>
+function scrollToSection(id) {
+    const section = document.getElementById(id);
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
 
-/*
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-*/
 // Intersection Observer for fade-in animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1782,30 +1768,27 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// Ensure publications section is immediately visible
-//document.getElementById('publications').classList.add('visible');
- 
-        // Update active nav button on scroll
- /*       window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            const navButtons = document.querySelectorAll('nav button');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+// Force publications section visible on mobile and handle resize
+function forceMobilePublicationsVisible() {
+    const pubSection = document.getElementById('publications');
+    if (!pubSection) return;
 
-            navButtons.forEach((button, index) => {
-                button.classList.remove('active');
-                if (button.textContent.toLowerCase() === current) {
-                    button.classList.add('active');
-                }
-            });
-        });*/
-        window.addEventListener('scroll', () => {
+    if (window.innerWidth <= 768) {
+        pubSection.classList.add('visible');
+    } else {
+        // Optional: remove `.visible` for desktop to rely on Intersection Observer
+        pubSection.classList.remove('visible');
+    }
+}
+
+// Run on initial load
+forceMobilePublicationsVisible();
+
+// Run on window resize
+window.addEventListener('resize', forceMobilePublicationsVisible);
+
+// Update active nav button on scroll
+window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('.section');
     const navButtons = document.querySelectorAll('nav button');
 
@@ -1826,8 +1809,8 @@ document.querySelectorAll('.section').forEach(section => {
         }
     });
 });
+</script>
 
-    </script>
 <script>
 const toggle = document.querySelector('.nav-toggle');
 const buttons = document.querySelector('.nav-buttons');
@@ -1846,5 +1829,6 @@ navItems.forEach(item => {
     });
 });
 </script>
+
 </body>
 </html>
