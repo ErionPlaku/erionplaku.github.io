@@ -1821,6 +1821,7 @@ window.addEventListener('scroll', () => {
 </script>
 
 <script>
+/*
 const toggle = document.querySelector('.nav-toggle');
 const buttons = document.querySelector('.nav-buttons');
 
@@ -1836,6 +1837,35 @@ navItems.forEach(item => {
         }
     });
 });
+*/
+const toggle = document.querySelector('.nav-toggle');
+const buttons = document.querySelector('.nav-buttons');
+
+// Toggle menu and lock page scroll
+toggle.addEventListener('click', () => {
+    buttons.classList.toggle('show');
+
+    if (buttons.classList.contains('show')) {
+        // Menu is open → prevent background scrolling
+        document.body.style.overflow = 'hidden';
+    } else {
+        // Menu is closed → restore page scrolling
+        document.body.style.overflow = '';
+    }
+});
+
+// Close menu after clicking a nav button (mobile only)
+const navItems = buttons.querySelectorAll('button, a.cv-button');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (buttons.classList.contains('show')) {
+            buttons.classList.remove('show');
+            // Restore page scrolling
+            document.body.style.overflow = '';
+        }
+    });
+});
+
 </script>
 
 
